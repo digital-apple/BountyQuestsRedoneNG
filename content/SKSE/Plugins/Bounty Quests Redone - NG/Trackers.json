@@ -1,0 +1,45 @@
+{
+	"Trackers" :
+	[
+		{
+			"GlobalVariable" : {"FormID" : "0x100040", "ModName" : "Bounty Quests Redone - NG.esp"},
+			"Region" : {"FormID" : "0x1676A", "ModName" : "Skyrim.esm"}
+		},
+		{
+			"GlobalVariable" : {"FormID" : "0x100041", "ModName" : "Bounty Quests Redone - NG.esp"},
+			"Region" : {"FormID" : "0x1676F", "ModName" : "Skyrim.esm"}
+		},
+		{
+			"GlobalVariable" : {"FormID" : "0x100042", "ModName" : "Bounty Quests Redone - NG.esp"},
+			"Region" : {"FormID" : "0x16770", "ModName" : "Skyrim.esm"}
+		},
+		{
+			"GlobalVariable" : {"FormID" : "0x100043", "ModName" : "Bounty Quests Redone - NG.esp"},
+			"Region" : {"FormID" : "0x1676E", "ModName" : "Skyrim.esm"}
+		},
+		{
+			"GlobalVariable" : {"FormID" : "0x100044", "ModName" : "Bounty Quests Redone - NG.esp"},
+			"Region" : {"FormID" : "0x1676D", "ModName" : "Skyrim.esm"}
+		},
+		{
+			"GlobalVariable" : {"FormID" : "0x100045", "ModName" : "Bounty Quests Redone - NG.esp"},
+			"Region" : {"FormID" : "0x16769", "ModName" : "Skyrim.esm"}
+		},
+		{
+			"GlobalVariable" : {"FormID" : "0x100046", "ModName" : "Bounty Quests Redone - NG.esp"},
+			"Region" : {"FormID" : "0x1676C", "ModName" : "Skyrim.esm"}
+		},
+		{
+			"GlobalVariable" : {"FormID" : "0x10003F", "ModName" : "Bounty Quests Redone - NG.esp"},
+			"Region" : {"FormID" : "0x16772", "ModName" : "Skyrim.esm"}
+		},
+		{
+			"GlobalVariable" : {"FormID" : "0x100047", "ModName" : "Bounty Quests Redone - NG.esp"},
+			"Region" : {"FormID" : "0x1676B", "ModName" : "Skyrim.esm"}
+		},
+		{
+			"GlobalVariable" : {"FormID" : "0x100048", "ModName" : "Bounty Quests Redone - NG.esp"},
+			"Region" : {"FormID" : "0x16E2A", "ModName" : "Dragonborn.esm"}
+		}		
+	]
+}

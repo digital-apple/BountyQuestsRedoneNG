@@ -1,0 +1,12 @@
+{
+	"Rewards" :
+	[
+		{
+			"Name" : "Gold"
+			"FormID" : "0xF",
+			"ModName" : "Skyrim.esm",
+			"FormType" : "MiscObject",
+			"Quantity" : {"Novice" : "250", "Apprentice" : "350", "Adept" : "500", "Expert" : "700", "Master" : "1000", "Legendary" : "2500"}
+		}
+	]	
+}
