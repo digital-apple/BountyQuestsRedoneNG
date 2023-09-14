@@ -37,7 +37,6 @@ void InitMessaging()
 			system->ParseQuests();
 			system->ParseRewards();
 			system->ParseTrackers();
-
 		}
 		})) {
 		stl::report_and_fail("Failed to initialize message listener.");

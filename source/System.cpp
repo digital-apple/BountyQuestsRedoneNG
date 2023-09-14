@@ -2,9 +2,6 @@
 #include "Serialization.h"
 #include "Offsets.h"
 
-// Remove unecessary logs.
-// Check quest texts.
-
 void System::AddToQueue(std::shared_ptr<Quest> a_quest)
 {
 	queue.push_back(a_quest);
@@ -12,7 +9,6 @@ void System::AddToQueue(std::shared_ptr<Quest> a_quest)
 
 auto System::CreateNote(std::string a_name, std::string a_difficulty) -> RE::TESObjectBOOK*
 {
-	logs::info("Util::CreateNote :: Creating note with name: '{}'", a_name);
 	const auto factory = RE::IFormFactory::GetConcreteFormFactoryByType<RE::TESObjectBOOK>();
 	auto note = factory->Create();
 	note->fullName = a_difficulty + " - " + a_name;
@@ -24,7 +20,6 @@ auto System::CreateNote(std::string a_name, std::string a_difficulty) -> RE::TES
 
 void System::CompleteObjective(RE::BGSLocation* a_region, std::uint16_t a_index)
 {
-	logs::info("System::CompleteObjective :: Passing index: '{}'", a_index);
 	for (auto& quest : quests) {
 		if (a_region == quest->region) {
 			for (auto& objective : quest->quest->objectives) {
@@ -74,8 +69,6 @@ void System::ParseQuests()
 		if (entry.path().extension() == ".json") {
         	std::ifstream path(std::filesystem::absolute(entry.path()));
 
-			logs::info("System::ParseQuests :: Current path: '{}'", entry.path().string());
-
 			json config = json::parse(path);
 			const json& questArray = config["Quests"];
 
@@ -90,15 +83,7 @@ void System::ParseQuests()
 				auto type = util->GetType(quest["Type"].as<std::string>());
 
 				if (location && region && owner) {
-					logs::info("System::ParseQuests :: Parsed Name: '{}", name);
-					logs::info("System::ParseQuests :: Parsed Difficulty: '{}'", quest["Difficulty"].as<std::string>());
-					logs::info("System::ParseQuests :: Parsed Location: '{}'", location->GetName());
-					logs::info("System::ParseQuests :: Parsed Region: '{}'", region->GetName());
-					logs::info("System::ParseQuests :: Parsed Quest: '{}'", owner->GetName());
-					logs::info("System::ParseQuests :: Parsed Type: '{}'", quest["Type"].as<std::string>());
-
 					auto note = CreateNote(name, quest["Difficulty"].as<std::string>());
-
 					quests.push_back(std::make_shared<Quest>(name, difficulty, location, region, owner, type, note));
 				} else {
 					logs::warn("System::ParseQuests :: Failed to parse quest '{}'", name);
@@ -110,7 +95,6 @@ void System::ParseQuests()
 
 void System::ParseQueue()
 {
-	logs::info("System::ParseQueue :: Call!");
 	std::jthread thread(&System::StartQuests, this);
 	thread.detach();
 }
@@ -153,7 +137,6 @@ void System::ParseTrackers()
 		auto region = dataHandler->LookupForm<RE::BGSLocation>(tracker["Region"]["FormID"].as<RE::FormID>(), tracker["Region"]["ModName"].as<std::string>());
 
 		if (global && region) {
-			logs::info("System::ParseTrackers :: Parsed tracker: '{}' : '{:x}'", global->GetFormEditorID(), global->GetFormID());
 			Serialization::GetSingleton()->AddTracker(global, region);
 		} else {
 			logs::warn("System::ParseTrackers :: Failed to parse tracker: '{:x}'.", tracker["GlobalVariable"]["FormID"].as<RE::FormID>());
@@ -163,8 +146,6 @@ void System::ParseTrackers()
 
 void System::PopulateMenu(RE::BGSLocation* a_region, Util::TYPE a_type)
 {
-	logs::info("System::PopulateMenu :: Populating menu with region: '{}' & type: '{}'", a_region->GetName(), static_cast<std::uint32_t>(a_type));
-
 	const auto player = RE::PlayerCharacter::GetSingleton();
 	const auto npc = RE::TESDataHandler::GetSingleton()->LookupForm<RE::Actor>(Offsets::Forms::BQRNG_NPC, "Bounty Quests Redone - NG.esp");
 	npc->ResetInventory(false);
@@ -175,9 +156,6 @@ void System::PopulateMenu(RE::BGSLocation* a_region, Util::TYPE a_type)
 
 			if (GetRefTypeAliveCount(quest->location, keyword, 0, 0, 0, 1, 0) > 0 && !Serialization::GetSingleton()->IsLocationReserved(quest->location) && GetIsEditorLocation(quest->region, player)) {
 				npc->AddObjectToContainer(quest->note, nullptr, 1, nullptr);
-
-				logs::info("GetRefTypeAliveCount: '{}' : '{}'", quest->location->GetName(), GetRefTypeAliveCount(quest->location, keyword, 0, 0, 0, 1, 0));
-				logs::info("GetIsEditorLocation: '{}'", GetIsEditorLocation(quest->region, player));
 			}
 		}
 	}
@@ -192,15 +170,11 @@ void System::RewardPlayer(RE::BGSLocation* a_region)
 			auto form = RE::TESDataHandler::GetSingleton()->LookupForm(reward.formID, reward.modName);
 
 			if (form) {
-				logs::info("Current form: '{}' & type: '{}'", form->GetName(), form->GetFormType());
-
 				for (auto& amount : reward.amount) {
 					auto times = data->GetTracker(a_region, amount.first);
 
 					if (amount.second && times > 0U) {
-						logs::info("Current amount & times: '{}' : '{}'", amount.second, times);
 						const auto quantity = amount.second * times;
-						logs::info("Amount result: '{}'", quantity);
 						const auto sAddItemtoInventory = RE::GameSettingCollection::GetSingleton()->GetSetting("sAddItemtoInventory");
 
 						RE::PlayerCharacter::GetSingleton()->AddObjectToContainer(form->As<RE::TESBoundObject>(), nullptr, quantity, nullptr);
@@ -258,13 +232,6 @@ void System::StartQuests()
 			quest->quest->Start();
 		}
 
-		logs::info("");
-		logs::info("System::StartQuest :: Current queue size: '{}'", queue.size());
-		logs::info("System::StartQuest :: Parsing quest: '{}' to queue", quest->name);
-		logs::info("System::StartQuest :: Parsing location: '{}' to queue", quest->location->GetName());
-		logs::info("System::StartQuest :: Parsing note: '{}' to queue", quest->note->GetName());
-		logs::info("");
-
 		for (const auto& alias : quest->quest->aliases) {
 			const auto referenceAlias = reinterpret_cast<RE::BGSRefAlias*>(alias);
 			if (!referenceAlias->GetActorReference()) {
@@ -279,19 +246,9 @@ void System::StartQuests()
 					counter++;
 				}
 
-				if (!reference) {
-					logs::info("System::StartQuest :: Failed to get reference!");
-				}
-
-				logs::info("Quest name: '{}'", quest->quest->GetName());
-				logs::info("Reference name: '{}'", reference->GetName());
-
 				if (reference && !reference->IsDisabled() && !reference->IsDead()) {
 					Serialization::GetSingleton()->ReserveLocation(quest->location, true);
 					ForceRefTo(quest->quest, referenceAlias->aliasID, reference);
-
-					// Separate into a new func / use native func? MAKE THIS A TASK!
-					// look for MapMarkerRefType
 
 					RE::TESObjectREFR* worldMarker = quest->location->worldLocMarker.get().get();
 					RE::TESObjectREFR* markerRef = worldMarker ? worldMarker : GetMapMarker(quest->location);
@@ -302,11 +259,9 @@ void System::StartQuests()
 					
 					for (const auto& objective : quest->quest->objectives) {
 						if (objective->index == referenceAlias->aliasID) {
-							logs::info("System::UpdateQuest :: Current Index & AliasID: '{}' | '{}'", objective->index, referenceAlias->aliasID);
 							objective->displayText = static_cast<std::string>(objective->displayText) + quest->location->GetName();
 							Serialization::GetSingleton()->SerializeObjectivesText(quest->quest, quest->location, objective->index, objective->displayText.c_str());
 							quest->objectiveIndex = objective->index;
-							logs::info("Quest's objective index: '{}'", quest->objectiveIndex);
 							SetObjectiveState(objective, RE::QUEST_OBJECTIVE_STATE::kDisplayed);
 						}
 					}
@@ -367,7 +322,6 @@ void System::UpdateGlobals()
 	hasVampire->value = 0U;
 	
 	for (const auto& quest : quests) {
-		logs::info("Current Quest Location, Region & Type: '{}' : '{}' : '{}'", quest->name, quest->region->GetName(), static_cast<std::uint32_t>(quest->type));
 		if (GetIsEditorLocation(quest->region, player)) {
 			if (quest->type == Util::TYPE::Bandit) {
 				hasBandit->value = 1U;
@@ -403,10 +357,8 @@ void System::UpdateLocationAlias(RE::TESQuest* a_quest, RE::BGSLocation* a_locat
 		for (auto& alias : a_quest->aliases) {
 			if (alias->aliasID == 0) {
 				a_quest->Stop();
-				logs::info("LocAlias Address: '{:x}'", reinterpret_cast<std::uint64_t>(alias));
 				auto location = static_cast<RE::BGSLocAlias*>(alias);
 				location->unk28 = reinterpret_cast<uint64_t>(a_location);
-				logs::info("System::UpdateLocationAlias :: Updated LocationAlias to: '{}'", reinterpret_cast<RE::BGSLocation*>(location->unk28)->GetName());
 				bool result;
 				a_quest->EnsureQuestStarted(result, false);
 				break;
@@ -417,8 +369,6 @@ void System::UpdateLocationAlias(RE::TESQuest* a_quest, RE::BGSLocation* a_locat
 
 void System::UpdateReward(RE::TESQuest* a_quest, std::uint16_t a_index)
 {
-	logs::info("System::UpdateReward :: Received index: '{}'", a_index);
-
 	for (auto& quest : quests) {
 		if (quest->quest == a_quest && quest->objectiveIndex == a_index) {
 

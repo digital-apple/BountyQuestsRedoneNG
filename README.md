@@ -1,6 +1,6 @@
 # Bounty Quests Redone - NG
 
-* [Nexus Page](https://www.nexusmods.com/skyrimspecialedition/)
+* [Nexus Page](https://www.nexusmods.com/skyrimspecialedition/mods/100630)
 
 ### Requirements
 

@@ -54,7 +54,6 @@ EventResult Events::ProcessEvent(const RE::TESActorLocationChangeEvent* a_event,
 		if (actor == RE::PlayerCharacter::GetSingleton()) {
 
 			if (auto newLocation = a_event->newLoc; newLocation) {
-				logs::info("Events::TESActorLocationChangeEvent :: New Location: '{}'", newLocation->GetName());
 				const auto BQRNG_Catalogue = Util::GetSingleton()->GetCatalogue();
 				System::GetSingleton()->UpdateLocationAlias(BQRNG_Catalogue, newLocation);
 			} 
