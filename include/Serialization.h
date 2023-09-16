@@ -16,15 +16,15 @@ public:
     struct Tracker
     {
         RE::TESGlobal* global;
-		RE::BGSLocation* region;
+        RE::BGSLocation* region;
         std::unordered_map<Util::DIFFICULTY, std::uint32_t> reward;
     };
 
     static Serialization* GetSingleton()
-	{
-		static Serialization singleton;
-		return &singleton;
-	}
+    {
+        static Serialization singleton;
+        return &singleton;
+    }
 
     void AddTracker(RE::TESGlobal* a_global, RE::BGSLocation* a_region);
     void ClearTracker(RE::BGSLocation* a_region);
@@ -42,14 +42,14 @@ public:
     static void OnGameSaved(SKSE::SerializationInterface*);
     static void OnRevert(SKSE::SerializationInterface*);
 private:
-	Serialization() = default;
-	Serialization(const Serialization&) = delete;
-	Serialization(Serialization&&) = delete;
+    Serialization() = default;
+    Serialization(const Serialization&) = delete;
+    Serialization(Serialization&&) = delete;
 
-	~Serialization() = default;
+    ~Serialization() = default;
 
-	Serialization& operator=(const Serialization&) = delete;
-	Serialization& operator=(Serialization&&) = delete;
+    Serialization& operator=(const Serialization&) = delete;
+    Serialization& operator=(Serialization&&) = delete;
 
     mutable std::mutex lock;
     std::vector<std::shared_ptr<Objective>> objectives;
