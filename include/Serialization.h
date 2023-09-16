@@ -32,6 +32,7 @@ public:
     auto GetTracker(RE::BGSLocation* a_region, Util::DIFFICULTY a_difficulty) -> std::uint32_t;
     bool IsLocationReserved(RE::BGSLocation* a_location) const;
     bool IsObjectiveSerialized(RE::BGSLocation* a_location) const;
+    bool IsTrackerSerialized(RE::TESGlobal* a_global) const;
     bool ReadString(SKSE::SerializationInterface* a_interface, std::string& a_string) const;
     void ReserveLocation(RE::BGSLocation* a_location, bool a_reserve);
     void SerializeObjectivesText(RE::TESQuest* a_quest, RE::BGSLocation* a_location, std::uint16_t a_index, std::string a_text);
@@ -54,5 +55,5 @@ private:
     mutable std::mutex lock;
     std::vector<std::shared_ptr<Objective>> objectives;
     std::vector<RE::BGSLocation*> reservedLocations;
-    std::vector<Tracker> trackers;
+    std::vector<std::shared_ptr<Tracker>> trackers;
 };

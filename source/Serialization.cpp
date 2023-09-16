@@ -7,16 +7,25 @@ inline const auto TrackersRecord = _byteswap_ulong('TRCR');
 
 void Serialization::AddTracker(RE::TESGlobal* a_global, RE::BGSLocation* a_region)
 {
+    logs::info("Serialization::AddTracker :: Parsing tracker: '{}' with global variable: '{:x}'", a_region->GetName(), a_global->GetFormID());
+
     Tracker instance{a_global, a_region};
-    trackers.push_back(instance);
+    trackers.push_back(std::make_shared<Tracker>(instance));
+    logs::info("Serialization::AddTracker :: Current number of trackers: '{}'", trackers.size());
 }
 
 void Serialization::ClearTracker(RE::BGSLocation* a_region)
 {
+    logs::info("Serialization::ClearTracker :: Searching for tracker: '{}'", a_region->GetName());
     for (auto& tracker : trackers) {
-        if (tracker.region == a_region) {
-            tracker.global->value = 0U;
-            tracker.reward.clear();
+        logs::info("Serialization::ClearTracker :: Parsing tracker: '{}'", tracker->region->GetName());
+        if (tracker->region == a_region) {
+            logs::info("Serialization::ClearTracker :: Tracker found!");
+            tracker->global->value = 0U;
+            logs::info("Serialization::ClearTracker :: Tried to clear global variable: '{:x}'. Result value: '{}'", tracker->global->GetFormID(), tracker->global->value);
+            tracker->reward.clear();
+            logs::info("Serialization::ClearTracker :: Tried to clear reward counter. Result value: '{}'", tracker->reward.size());
+            break;
         }
     }
 }
@@ -47,8 +56,8 @@ void Serialization::DeserializeObjectivesText(RE::TESQuest* a_quest, RE::BGSLoca
 auto Serialization::GetTracker(RE::BGSLocation* a_region, Util::DIFFICULTY a_difficulty) -> std::uint32_t
 {
     for (auto& tracker : trackers) {
-        if (tracker.region == a_region) {
-            return tracker.reward[a_difficulty];
+        if (tracker->region == a_region) {
+            return tracker->reward[a_difficulty];
         }
     }
     return 0U;
@@ -56,7 +65,7 @@ auto Serialization::GetTracker(RE::BGSLocation* a_region, Util::DIFFICULTY a_dif
 
 bool Serialization::IsLocationReserved(RE::BGSLocation* a_location) const
 {
-	return std::find_if(reservedLocations.begin(), reservedLocations.end(), [a_location](RE::BGSLocation* location) { return location == a_location; }) != reservedLocations.end();
+    return std::find_if(reservedLocations.begin(), reservedLocations.end(), [a_location](RE::BGSLocation* location) { return location == a_location; }) != reservedLocations.end();
 }
 
 bool Serialization::IsObjectiveSerialized(RE::BGSLocation* a_location) const
@@ -64,32 +73,37 @@ bool Serialization::IsObjectiveSerialized(RE::BGSLocation* a_location) const
     return std::find_if(objectives.begin(), objectives.end(), [a_location](std::shared_ptr<Serialization::Objective> objective) { return objective->location == a_location; }) != objectives.end();
 }
 
+bool Serialization::IsTrackerSerialized(RE::TESGlobal* a_global) const
+{
+    return std::find_if(trackers.begin(), trackers.end(), [a_global](std::shared_ptr<Serialization::Tracker> tracker) { return tracker->global == a_global; }) != trackers.end();
+}
+
 // Credits to Papyrus Extender by powerofthree for the string helper functions.
 bool Serialization::ReadString(SKSE::SerializationInterface* a_interface, std::string& a_string) const
 {
     std::size_t size = 0;
 
-	if (!a_interface->ReadRecordData(size)) {
-		return false;
-	}
+    if (!a_interface->ReadRecordData(size)) {
+        return false;
+    }
 
-	a_string.reserve(size);
+    a_string.reserve(size);
 
-	if (!a_interface->ReadRecordData(a_string.data(), static_cast<std::uint32_t>(size))) {
-		return false;
-	}
-	return true;    
+    if (!a_interface->ReadRecordData(a_string.data(), static_cast<std::uint32_t>(size))) {
+        return false;
+    }
+    return true;    
 }
 
 void Serialization::ReserveLocation(RE::BGSLocation* a_location, bool a_reserve)
 {
-	if (a_location) {
-		if (a_reserve) {
-			reservedLocations.push_back(a_location);
-		} else {
-			reservedLocations.erase(std::remove(reservedLocations.begin(), reservedLocations.end(), a_location), reservedLocations.end());
-		}
-	}
+    if (a_location) {
+        if (a_reserve) {
+            reservedLocations.push_back(a_location);
+        } else {
+            reservedLocations.erase(std::remove(reservedLocations.begin(), reservedLocations.end(), a_location), reservedLocations.end());
+        }
+    }
 }
 
 void Serialization::SerializeObjectivesText(RE::TESQuest* a_quest, RE::BGSLocation* a_location, std::uint16_t a_index, std::string a_text)
@@ -99,10 +113,16 @@ void Serialization::SerializeObjectivesText(RE::TESQuest* a_quest, RE::BGSLocati
 
 void Serialization::SetTracker(RE::BGSLocation* a_region, Util::DIFFICULTY a_difficulty, std::uint32_t a_amount)
 {
+    logs::info("Serialization::SetTracker :: Searching for tracker: '{}'", a_region->GetName());
     for (auto& tracker : trackers) {
-        if (tracker.region == a_region) {
-            tracker.global->value = 1U;
-            tracker.reward[a_difficulty] += a_amount;
+        logs::info("Serialization::SetTracker :: Parsing tracker: '{}'", tracker->region->GetName());
+        if (tracker->region == a_region) {
+            logs::info("Serialization::SetTracker :: Tracker found!");
+            tracker->global->value = 1U;
+            logs::info("Serialization::SetTracker :: Tried to set global variable: '{:x}'. Result value: '{}'", tracker->global->GetFormID(), tracker->global->value);
+            tracker->reward[a_difficulty] += a_amount;
+            logs::info("Serialization::SetTracker :: Tried to set reward counter for difficulty: '{}' with an increase of: '{}'. Result value: '{}'", static_cast<std::uint32_t>(a_difficulty), a_amount, tracker->reward[a_difficulty]);
+            break;
         }
     }
 }
@@ -110,7 +130,7 @@ void Serialization::SetTracker(RE::BGSLocation* a_region, Util::DIFFICULTY a_dif
 bool Serialization::WriteString(SKSE::SerializationInterface* a_interface, const std::string& a_string) const
 {
     std::size_t size = a_string.length() + 1;
-	return a_interface->WriteRecordData(size) && a_interface->WriteRecordData(a_string.data(), static_cast<std::uint32_t>(size));
+    return a_interface->WriteRecordData(size) && a_interface->WriteRecordData(a_string.data(), static_cast<std::uint32_t>(size));
 }
 
 void Serialization::OnGameLoaded(SKSE::SerializationInterface* a_interface)
@@ -178,6 +198,8 @@ void Serialization::OnGameLoaded(SKSE::SerializationInterface* a_interface)
             
             }
         } else if (type == TrackersRecord) {
+            System::GetSingleton()->ParseTrackers();
+
             std::size_t trackersSize;
             a_interface->ReadRecordData(&trackersSize, sizeof(trackersSize));
 
@@ -219,8 +241,15 @@ void Serialization::OnGameLoaded(SKSE::SerializationInterface* a_interface)
                 auto region = RE::TESForm::LookupByID<RE::BGSLocation>(newRegionFormID);
 
                 if (global && region) {
-                    Tracker instance{ global, region, temporary };
-                    GetSingleton()->trackers.push_back(instance);
+                    if (GetSingleton()->IsTrackerSerialized(global)) {
+                        logs::info("Serialization::OnGameLoaded :: Tracker: '{}' with form id '{:x}' was found. Updating reward values.", region->GetName(), global->GetFormID());
+                        for (auto& tracker : GetSingleton()->trackers) {
+                            if (tracker->global == global) {
+                                tracker->reward = temporary;
+                                break;
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -268,13 +297,13 @@ void Serialization::OnGameSaved(SKSE::SerializationInterface* a_interface)
     a_interface->WriteRecordData(&trackersSize, sizeof(trackersSize));
 
     for (auto& tracker : GetSingleton()->trackers) {
-        a_interface->WriteRecordData(&tracker.global->formID, sizeof(tracker.global->formID));
-        a_interface->WriteRecordData(&tracker.region->formID, sizeof(tracker.region->formID));
+        a_interface->WriteRecordData(&tracker->global->formID, sizeof(tracker->global->formID));
+        a_interface->WriteRecordData(&tracker->region->formID, sizeof(tracker->region->formID));
 
-        auto rewardSize = tracker.reward.size();
+        auto rewardSize = tracker->reward.size();
         a_interface->WriteRecordData(&rewardSize, sizeof(rewardSize));
 
-        for (auto& reward : tracker.reward) {
+        for (auto& reward : tracker->reward) {
             a_interface->WriteRecordData(&reward.first, sizeof(reward.first));
             a_interface->WriteRecordData(&reward.second, sizeof(reward.second));
         }
@@ -283,6 +312,7 @@ void Serialization::OnGameSaved(SKSE::SerializationInterface* a_interface)
 
 void Serialization::OnRevert(SKSE::SerializationInterface*)
 {
+    logs::info("Serialization::OnRevert :: Reverting data.");
     std::unique_lock lock(GetSingleton()->lock);
     GetSingleton()->reservedLocations.clear();
     GetSingleton()->objectives.clear();

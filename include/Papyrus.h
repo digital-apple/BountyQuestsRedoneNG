@@ -2,5 +2,5 @@
 
 namespace Papyrus
 {
-	bool RegisterFunctions(RE::BSScript::IVirtualMachine* a_vm);
+    bool RegisterFunctions(RE::BSScript::IVirtualMachine* a_vm);
 }
