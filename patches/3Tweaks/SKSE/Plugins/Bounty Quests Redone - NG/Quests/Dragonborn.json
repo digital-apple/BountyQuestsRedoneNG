@@ -26,7 +26,7 @@
 			"Type" : "Reaver"	
 		},
 		{
-			"LocationName" : "Strident Squall",	
+			"LocationName" : "Wreck of the Strident Squall",	
 			"Difficulty" : "Apprentice",
 			"Location" : {"FormID" : "0x142C9", "ModName" : "Dragonborn.esm"},	
 			"Region" : {"FormID" : "0x16E2A", "ModName" : "Dragonborn.esm"},
