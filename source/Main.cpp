@@ -36,9 +36,9 @@ void InitMessaging()
 
             system->ParseQuests();
             system->ParseRewards();
-        } else if (a_msg->type == SKSE::MessagingInterface::kNewGame) {
             System::GetSingleton()->ParseTrackers();
-        }
+        }  
+        
         })) {
         stl::report_and_fail("Failed to initialize message listener.");
     }
