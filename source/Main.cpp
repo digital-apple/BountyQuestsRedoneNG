@@ -36,7 +36,7 @@ void InitMessaging()
 
             system->ParseQuests();
             system->ParseRewards();
-            System::GetSingleton()->ParseTrackers();
+            system->ParseTrackers();
         }  
         
         })) {

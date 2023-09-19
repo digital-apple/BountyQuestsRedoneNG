@@ -133,7 +133,7 @@
 			"LocationName" : "Broken Oar Grotto",	
 			"Difficulty" : "Master",
 			"Location" : {"FormID" : "0x19153", "ModName" : "Skyrim.esm"},	
-			"Region" : {"FormID" : "0x1676E", "ModName" : "Skyrim.esm"},
+			"Region" : {"FormID" : "0x16770", "ModName" : "Skyrim.esm"},
 			"Quest" : {"FormID" : "0x110003", "ModName" : "Bounty Quests Redone - NG.esp" },
 			"Type" : "Bandit"	
 		},
@@ -141,7 +141,7 @@
 			"LocationName" : "Dainty Sload",	
 			"Difficulty" : "Expert",
 			"Location" : {"FormID" : "0x7B91A", "ModName" : "Skyrim.esm"},	
-			"Region" : {"FormID" : "0x1676E", "ModName" : "Skyrim.esm"},
+			"Region" : {"FormID" : "0x16770", "ModName" : "Skyrim.esm"},
 			"Quest" : {"FormID" : "0x110003", "ModName" : "Bounty Quests Redone - NG.esp" },
 			"Type" : "Bandit"	
 		},
@@ -149,7 +149,7 @@
 			"LocationName" : "Ironback Hideout",	
 			"Difficulty" : "Novice",
 			"Location" : {"FormID" : "0xEF546", "ModName" : "Skyrim.esm"},	
-			"Region" : {"FormID" : "0x1676E", "ModName" : "Skyrim.esm"},
+			"Region" : {"FormID" : "0x16770", "ModName" : "Skyrim.esm"},
 			"Quest" : {"FormID" : "0x110003", "ModName" : "Bounty Quests Redone - NG.esp" },
 			"Type" : "Bandit"	
 		},
@@ -157,7 +157,7 @@
 			"LocationName" : "Orphan's Tear",	
 			"Difficulty" : "Novice",
 			"Location" : {"FormID" : "0x192A5", "ModName" : "Skyrim.esm"},	
-			"Region" : {"FormID" : "0x1676E", "ModName" : "Skyrim.esm"},
+			"Region" : {"FormID" : "0x16770", "ModName" : "Skyrim.esm"},
 			"Quest" : {"FormID" : "0x110003", "ModName" : "Bounty Quests Redone - NG.esp" },
 			"Type" : "Bandit"	
 		},
