@@ -15,22 +15,22 @@ namespace Offsets
 
     namespace Forms
     {
-        static RE::FormID BQRNG_AliasGenerator{ 0x10004B };
-        static RE::FormID BQRNG_Catalogue{ 0x110000 };
+        static RE::FormID BQRNG_AliasGenerator{ 0x843 };
+        static RE::FormID BQRNG_Catalogue{ 0x86B };
 
-        static RE::FormID BQRNG_RegionHasBandit{ 0x111000 };
-        static RE::FormID BQRNG_RegionHasDragon{ 0x111001 };
-        static RE::FormID BQRNG_RegionHasDraugr{ 0x111002 };
-        static RE::FormID BQRNG_RegionHasDwarven{ 0x111003 };
-        static RE::FormID BQRNG_RegionHasFalmer{ 0x111004 };
-        static RE::FormID BQRNG_RegionHasForsworn{ 0x111005 };
-        static RE::FormID BQRNG_RegionHasGiant{ 0x111006 };
-        static RE::FormID BQRNG_RegionHasMage{ 0x111007 };
-        static RE::FormID BQRNG_RegionHasReaver{ 0x111008 };
-        static RE::FormID BQRNG_RegionHasRiekling{ 0x111009 };
-        static RE::FormID BQRNG_RegionHasVampire{ 0x111010 };
+        static RE::FormID BQRNG_RegionHasBandit{ 0x876 };
+        static RE::FormID BQRNG_RegionHasDragon{ 0x877 };
+        static RE::FormID BQRNG_RegionHasDraugr{ 0x878 };
+        static RE::FormID BQRNG_RegionHasDwarven{ 0x879 };
+        static RE::FormID BQRNG_RegionHasFalmer{ 0x87A };
+        static RE::FormID BQRNG_RegionHasForsworn{ 0x87B };
+        static RE::FormID BQRNG_RegionHasGiant{ 0x87C };
+        static RE::FormID BQRNG_RegionHasMage{ 0x87D };
+        static RE::FormID BQRNG_RegionHasReaver{ 0x87E };
+        static RE::FormID BQRNG_RegionHasRiekling{ 0x87F };
+        static RE::FormID BQRNG_RegionHasVampire{ 0x880 };
         
-        static RE::FormID BQRNG_NPC{ 0x100027 };
+        static RE::FormID BQRNG_NPC{ 0x820 };
 
         static RE::FormID NoteInventoryModel{ 0x1541C };
         static RE::FormID NotePickupSound{ 0xC7A55 };
