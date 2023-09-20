@@ -147,19 +147,22 @@ void System::ParseTrackers()
 void System::PopulateMenu(RE::BGSLocation* a_region, Util::TYPE a_type)
 {
     const auto player = RE::PlayerCharacter::GetSingleton();
-    const auto npc = RE::TESDataHandler::GetSingleton()->LookupForm<RE::Actor>(Offsets::Forms::BQRNG_NPC, "Bounty Quests Redone - NG.esp");
-    npc->ResetInventory(false);
+    const auto npc = RE::TESDataHandler::GetSingleton()->LookupForm<RE::Actor>(Offsets::Forms::BQRNG_NPC, "Bounty Quests Redone - NG.esl");
 
-    for (auto& quest : quests) {
-        if (quest->region == a_region && quest->type == a_type) {
-            const auto keyword = RE::TESForm::LookupByID<RE::BGSLocationRefType>(Offsets::Forms::Boss);
+    if (npc) {
+        npc->ResetInventory(false);
 
-            if (GetRefTypeAliveCount(quest->location, keyword, 0, 0, 0, 1, 0) > 0 && !Serialization::GetSingleton()->IsLocationReserved(quest->location) && GetIsEditorLocation(quest->region, player)) {
-                npc->AddObjectToContainer(quest->note, nullptr, 1, nullptr);
+        for (auto& quest : quests) {
+            if (quest->region == a_region && quest->type == a_type) {
+                const auto keyword = RE::TESForm::LookupByID<RE::BGSLocationRefType>(Offsets::Forms::Boss);
+
+                if (GetRefTypeAliveCount(quest->location, keyword, 0, 0, 0, 1, 0) > 0 && !Serialization::GetSingleton()->IsLocationReserved(quest->location) && GetIsEditorLocation(quest->region, player)) {
+                    npc->AddObjectToContainer(quest->note, nullptr, 1, nullptr);
+                }
             }
         }
+        ShowGiftMenu(npc, player);
     }
-    ShowGiftMenu(npc, player);
 }
 
 void System::RewardPlayer(RE::BGSLocation* a_region)
@@ -225,7 +228,7 @@ void System::StartEveryQuest(RE::BGSLocation* a_region, Util::TYPE a_type)
 
 void System::StartQuests()
 {
-    const auto BQRNG_AliasGenerator = RE::TESDataHandler::GetSingleton()->LookupForm<RE::TESQuest>(Offsets::Forms::BQRNG_AliasGenerator, "Bounty Quests Redone - NG.esp");
+    const auto BQRNG_AliasGenerator = RE::TESDataHandler::GetSingleton()->LookupForm<RE::TESQuest>(Offsets::Forms::BQRNG_AliasGenerator, "Bounty Quests Redone - NG.esl");
 
     for (auto& quest : queue) {
         if (quest->quest && !quest->quest->IsRunning()) {
@@ -297,17 +300,17 @@ void System::UpdateGlobals()
     const auto player = RE::PlayerCharacter::GetSingleton();
     const auto dataHandler = RE::TESDataHandler::GetSingleton();
 
-    auto hasBandit = dataHandler->LookupForm<RE::TESGlobal>(Offsets::Forms::BQRNG_RegionHasBandit, "Bounty Quests Redone - NG.esp");
-    auto hasDragon = dataHandler->LookupForm<RE::TESGlobal>(Offsets::Forms::BQRNG_RegionHasDragon, "Bounty Quests Redone - NG.esp");
-    auto hasDraugr = dataHandler->LookupForm<RE::TESGlobal>(Offsets::Forms::BQRNG_RegionHasDraugr, "Bounty Quests Redone - NG.esp");
-    auto hasDwarven = dataHandler->LookupForm<RE::TESGlobal>(Offsets::Forms::BQRNG_RegionHasDwarven, "Bounty Quests Redone - NG.esp");
-    auto hasFalmer = dataHandler->LookupForm<RE::TESGlobal>(Offsets::Forms::BQRNG_RegionHasFalmer, "Bounty Quests Redone - NG.esp");
-    auto hasForsworn = dataHandler->LookupForm<RE::TESGlobal>(Offsets::Forms::BQRNG_RegionHasForsworn, "Bounty Quests Redone - NG.esp");
-    auto hasGiant = dataHandler->LookupForm<RE::TESGlobal>(Offsets::Forms::BQRNG_RegionHasGiant, "Bounty Quests Redone - NG.esp");
-    auto hasMage = dataHandler->LookupForm<RE::TESGlobal>(Offsets::Forms::BQRNG_RegionHasMage, "Bounty Quests Redone - NG.esp");
-    auto hasReaver = dataHandler->LookupForm<RE::TESGlobal>(Offsets::Forms::BQRNG_RegionHasReaver, "Bounty Quests Redone - NG.esp");
-    auto hasRiekling = dataHandler->LookupForm<RE::TESGlobal>(Offsets::Forms::BQRNG_RegionHasRiekling, "Bounty Quests Redone - NG.esp");
-    auto hasVampire = dataHandler->LookupForm<RE::TESGlobal>(Offsets::Forms::BQRNG_RegionHasVampire, "Bounty Quests Redone - NG.esp");
+    auto hasBandit = dataHandler->LookupForm<RE::TESGlobal>(Offsets::Forms::BQRNG_RegionHasBandit, "Bounty Quests Redone - NG.esl");
+    auto hasDragon = dataHandler->LookupForm<RE::TESGlobal>(Offsets::Forms::BQRNG_RegionHasDragon, "Bounty Quests Redone - NG.esl");
+    auto hasDraugr = dataHandler->LookupForm<RE::TESGlobal>(Offsets::Forms::BQRNG_RegionHasDraugr, "Bounty Quests Redone - NG.esl");
+    auto hasDwarven = dataHandler->LookupForm<RE::TESGlobal>(Offsets::Forms::BQRNG_RegionHasDwarven, "Bounty Quests Redone - NG.esl");
+    auto hasFalmer = dataHandler->LookupForm<RE::TESGlobal>(Offsets::Forms::BQRNG_RegionHasFalmer, "Bounty Quests Redone - NG.esl");
+    auto hasForsworn = dataHandler->LookupForm<RE::TESGlobal>(Offsets::Forms::BQRNG_RegionHasForsworn, "Bounty Quests Redone - NG.esl");
+    auto hasGiant = dataHandler->LookupForm<RE::TESGlobal>(Offsets::Forms::BQRNG_RegionHasGiant, "Bounty Quests Redone - NG.esl");
+    auto hasMage = dataHandler->LookupForm<RE::TESGlobal>(Offsets::Forms::BQRNG_RegionHasMage, "Bounty Quests Redone - NG.esl");
+    auto hasReaver = dataHandler->LookupForm<RE::TESGlobal>(Offsets::Forms::BQRNG_RegionHasReaver, "Bounty Quests Redone - NG.esl");
+    auto hasRiekling = dataHandler->LookupForm<RE::TESGlobal>(Offsets::Forms::BQRNG_RegionHasRiekling, "Bounty Quests Redone - NG.esl");
+    auto hasVampire = dataHandler->LookupForm<RE::TESGlobal>(Offsets::Forms::BQRNG_RegionHasVampire, "Bounty Quests Redone - NG.esl");
 
     hasBandit->value = 0U;
     hasDragon->value = 0U;

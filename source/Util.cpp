@@ -2,7 +2,7 @@
 
 auto Util::GetCatalogue() const -> RE::TESQuest*
 {
-    return RE::TESDataHandler::GetSingleton()->LookupForm<RE::TESQuest>(Offsets::Forms::BQRNG_Catalogue, "Bounty Quests Redone - NG.esp");
+    return RE::TESDataHandler::GetSingleton()->LookupForm<RE::TESQuest>(Offsets::Forms::BQRNG_Catalogue, "Bounty Quests Redone - NG.esl");
 }
 
 auto Util::GetDifficulty(std::string a_string) -> Util::DIFFICULTY
