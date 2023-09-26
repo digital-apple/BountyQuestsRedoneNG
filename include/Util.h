@@ -40,6 +40,7 @@ public:
 
     auto GetCatalogue() const -> RE::TESQuest*;
     auto GetDifficulty(std::string a_string) -> DIFFICULTY;
+    auto GetDifficulty(Util::DIFFICULTY a_difficulty) -> std::string;
     auto GetLocation(RE::FormID a_formID, std::string a_modName) const -> RE::BGSLocation*;
     auto GetQuest(RE::FormID a_formID, std::string a_modName) const -> RE::TESQuest*;
     auto GetType(std::string a_string) -> TYPE;

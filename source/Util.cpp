@@ -25,6 +25,33 @@ auto Util::GetDifficulty(std::string a_string) -> Util::DIFFICULTY
     }
 }
 
+auto Util::GetDifficulty(Util::DIFFICULTY a_difficulty) -> std::string
+{
+    switch (a_difficulty) {
+        case DIFFICULTY::Novice:
+            return "Novice";
+            break;
+        case DIFFICULTY::Apprentice:
+            return "Apprentice";
+            break;
+        case DIFFICULTY::Adept:
+            return "Adept";
+            break;
+        case DIFFICULTY::Expert:
+            return "Expert";
+            break;
+        case DIFFICULTY::Master:
+            return "Master";
+            break;
+        case DIFFICULTY::Legendary:
+            return "Legendary";
+            break;
+        default:
+            return "None";
+            break;
+    }
+}
+
 auto Util::GetLocation(RE::FormID a_formID, std::string a_modName) const -> RE::BGSLocation*
 {
     return RE::TESDataHandler::GetSingleton()->LookupForm<RE::BGSLocation>(a_formID, a_modName);

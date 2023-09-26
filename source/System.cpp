@@ -85,8 +85,9 @@ void System::ParseQuests()
                 if (location && region && owner) {
                     auto note = CreateNote(name, quest["Difficulty"].as<std::string>());
                     quests.push_back(std::make_shared<Quest>(name, difficulty, location, region, owner, type, note));
+                    logs::info("System::ParseQuests :: Successfully parsed quest: '{}'", name);
                 } else {
-                    logs::warn("System::ParseQuests :: Failed to parse quest '{}'", name);
+                    logs::warn("System::ParseQuests :: Failed to parse quest: '{}'", name);
                 }
             }
         }
@@ -216,6 +217,8 @@ void System::ShowGiftMenu(RE::TESObjectREFR* a_target, RE::TESObjectREFR* a_sour
 
 void System::StartEveryQuest(RE::BGSLocation* a_region, Util::TYPE a_type)
 {
+    logs::info("System::StartEveryQuest :: Starting every available quest from: '{}' with type: '{}'", a_region->GetName(), static_cast<std::uint32_t>(a_type));
+
     for (const auto& quest : quests) {
         if (quest->region == a_region && !Serialization::GetSingleton()->IsLocationReserved(quest->location)) {
             if (quest->type == a_type || a_type == Util::TYPE::None) {
@@ -230,55 +233,66 @@ void System::StartQuests()
 {
     const auto BQRNG_AliasGenerator = RE::TESDataHandler::GetSingleton()->LookupForm<RE::TESQuest>(Offsets::Forms::BQRNG_AliasGenerator, "Bounty Quests Redone - NG.esl");
 
+    logs::info("System::StartQuests :: Parsing '{}' quests.", queue.size());
+
     for (auto& quest : queue) {
-        if (quest->quest && !quest->quest->IsRunning()) {
-            quest->quest->Start();
-        }
+        if (quest->location && quest->region && quest->quest) {
+            if (quest->quest && !quest->quest->IsRunning()) {
+                quest->quest->Start();
+            }
 
-        for (const auto& alias : quest->quest->aliases) {
-            const auto referenceAlias = reinterpret_cast<RE::BGSRefAlias*>(alias);
-            if (!referenceAlias->GetActorReference() || referenceAlias->GetActorReference() && referenceAlias->GetActorReference()->IsDead()) {
+            for (const auto& alias : quest->quest->aliases) {
+                const auto referenceAlias = reinterpret_cast<RE::BGSRefAlias*>(alias);
+
+                if (!referenceAlias->GetActorReference() || referenceAlias->GetActorReference() && referenceAlias->GetActorReference()->IsDead()) {
+                    RE::Actor* reference = nullptr;
+                    auto counter = 0;
                 
-                RE::Actor* reference = nullptr;
-                auto counter = 0;
-                
-                while (!reference && counter < 10) {
-                    UpdateLocationAlias(BQRNG_AliasGenerator, quest->location);    
-                    std::this_thread::sleep_for(std::chrono::milliseconds(250));
-                    reference = GetAliasReference(BQRNG_AliasGenerator);
-                    counter++;
-                }
-
-                if (reference && !reference->IsDisabled() && !reference->IsDead()) {
-                    Serialization::GetSingleton()->ReserveLocation(quest->location, true);
-                    ForceRefTo(quest->quest, referenceAlias->aliasID, reference);
-
-                    RE::TESObjectREFR* worldMarker = quest->location->worldLocMarker.get().get();
-                    RE::TESObjectREFR* markerRef = worldMarker ? worldMarker : GetMapMarker(quest->location);
-                    if (markerRef) {
-                        RE::ExtraMapMarker* mapMarker = markerRef ? markerRef->extraList.GetByType<RE::ExtraMapMarker>() : nullptr;
-                        mapMarker->mapData->SetVisible(true);
+                    while (!reference && counter < 10) {
+                        UpdateLocationAlias(BQRNG_AliasGenerator, quest->location);    
+                        std::this_thread::sleep_for(std::chrono::milliseconds(250));
+                        reference = GetAliasReference(BQRNG_AliasGenerator);
+                        counter++;
                     }
-                    
-                    for (const auto& objective : quest->quest->objectives) {
-                        if (objective->index == referenceAlias->aliasID) {
-                            objective->displayText = static_cast<std::string>(objective->displayText) + quest->location->GetName();
-                            Serialization::GetSingleton()->SerializeObjectivesText(quest->quest, quest->location, objective->index, objective->displayText.c_str());
-                            quest->objectiveIndex = objective->index;
-                            SetObjectiveState(objective, RE::QUEST_OBJECTIVE_STATE::kDisplayed);
+
+                    if (reference && !reference->IsDisabled() && !reference->IsDead()) {
+                        Serialization::GetSingleton()->ReserveLocation(quest->location, true);
+                        ForceRefTo(quest->quest, referenceAlias->aliasID, reference);
+                        RE::TESObjectREFR* worldMarker = quest->location->worldLocMarker.get().get();
+                        RE::TESObjectREFR* markerRef = worldMarker ? worldMarker : GetMapMarker(quest->location);
+
+                        if (markerRef) {
+                            RE::ExtraMapMarker* mapMarker = markerRef ? markerRef->extraList.GetByType<RE::ExtraMapMarker>() : nullptr;
+                            mapMarker->mapData->SetVisible(true);
                         }
+                    
+                        for (const auto& objective : quest->quest->objectives) {
+                            if (objective->index == referenceAlias->aliasID) {
+                                if (objective->displayText.back() == ' ') {
+                                    objective->displayText = Util::GetSingleton()->GetDifficulty(quest->difficulty) + ": " + static_cast<std::string>(objective->displayText) + quest->location->GetName();
+                                }
+                            
+                                Serialization::GetSingleton()->SerializeObjectivesText(quest->quest, quest->location, objective->index, objective->displayText.c_str());
+                                quest->objectiveIndex = objective->index;
+                                SetObjectiveState(objective, RE::QUEST_OBJECTIVE_STATE::kDisplayed);
+                            }
+                        }
+                        break;
                     }
                     break;
                 }
-                break;
             }
+        } else {
+            logs::warn("System::StartQuests :: Quest: '{}' couldn't be started due to missing or invalid data.", quest->name);
         }
+        queue.clear();
     }
-    queue.clear();
 }
 
 void System::StartRandomQuest(RE::BGSLocation* a_region, Util::TYPE a_type)
 {
+    logs::info("System::StartRandomQuest :: Starting random quest from: '{}' with type: '{}'", a_region->GetName(), static_cast<std::uint32_t>(a_type));
+
     std::vector<std::shared_ptr<Quest>> temporary;
 
     for (const auto& quest : quests) {
