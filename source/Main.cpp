@@ -37,6 +37,7 @@ void InitMessaging()
             system->ParseQuests();
             system->ParseRewards();
             system->ParseTrackers();
+            system->ParseTexts();
         }  
         
         })) {
@@ -59,7 +60,7 @@ void InitSerialization()
 {
     logs::trace("Initializing cosave serialization...");
     auto* interface = SKSE::GetSerializationInterface();
-    interface->SetUniqueID(_byteswap_ulong('BQNG'));
+    interface->SetUniqueID('BQNG');
     interface->SetSaveCallback(Serialization::OnGameSaved);
     interface->SetRevertCallback(Serialization::OnRevert);
     interface->SetLoadCallback(Serialization::OnGameLoaded);

@@ -1,0 +1,14 @@
+{
+	"Texts" :
+	[
+		{
+			"Objective" : "%d: Kill <Alias=Boss%i> at %l",
+			"Novice" : "Novice",
+			"Apprentice" : "Apprentice",
+			"Adept" : "Adept",
+			"Expert" : "Expert",
+			"Master" : "Master",
+			"Legendary" : "Legendary"
+		}
+	]
+}

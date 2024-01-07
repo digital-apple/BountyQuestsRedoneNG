@@ -9,7 +9,7 @@
                 commit = "c64d11db3514f307c0a6b165e2fe1aec49769f40",
                 url = "https://gitlab.com/tboox/xmake-repo.git"
             },
-            version = "3.26.0-msvc3"
+            version = "3.27.2-msvc1"
         },
         ["commonlibsse-ng#31fecfc4"] = {
             repo = {
@@ -30,7 +30,7 @@
         ["jsoncons#31fecfc4"] = {
             repo = {
                 branch = "master",
-                commit = "74828023ec23ec05421fc1f508278036b0b214e8",
+                commit = "c64d11db3514f307c0a6b165e2fe1aec49769f40",
                 url = "https://gitlab.com/tboox/xmake-repo.git"
             },
             version = "v0.170.2"
@@ -46,7 +46,7 @@
         ["spdlog#b06e1130"] = {
             repo = {
                 branch = "master",
-                commit = "622487b18b675caabad2fece8657ecb2be1ade12",
+                commit = "c64d11db3514f307c0a6b165e2fe1aec49769f40",
                 url = "https://gitlab.com/tboox/xmake-repo.git"
             },
             version = "v1.12.0"

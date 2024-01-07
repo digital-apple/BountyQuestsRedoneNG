@@ -6,7 +6,7 @@ Scriptname BQRNG_SCPT_ShowMenu Extends TopicInfo Hidden
 Function Fragment_0(ObjectReference akSpeakerRef)
 Actor akSpeaker = akSpeakerRef as Actor
 ;BEGIN CODE
-BQRNG.ShowMenu((Self.GetOwningQuest().GetAlias(2) As LOCATIONALIAS).GetLocation(), Type)
+BQRNG.ShowMenu((Self.GetOwningQuest().GetAlias(0) As LOCATIONALIAS).GetLocation(), Type)
 ;END CODE
 EndFunction
 ;END FRAGMENT

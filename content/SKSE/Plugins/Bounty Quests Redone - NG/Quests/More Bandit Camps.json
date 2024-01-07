@@ -6,7 +6,7 @@
 			"Difficulty" : "Apprentice",
 			"Location" : {"FormID" : "0x1CEA3", "ModName" : "MoreBanditCamps.esp"},	
 			"Region" : {"FormID" : "0x1676A", "ModName" : "Skyrim.esm"},
-			"Quest" : {"FormID" : "0x110001", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : {"FormID" : "0x86C", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Bandit"	
 		},
 		{
@@ -14,7 +14,7 @@
 			"Difficulty" : "Apprentice",
 			"Location" : {"FormID" : "0x1CEBC", "ModName" : "MoreBanditCamps.esp"},	
 			"Region" : {"FormID" : "0x1676A", "ModName" : "Skyrim.esm"},
-			"Quest" : {"FormID" : "0x110001", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : {"FormID" : "0x86C", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Bandit"	
 		},
 		{
@@ -22,7 +22,7 @@
 			"Difficulty" : "Apprentice",
 			"Location" : {"FormID" : "0x1CEC1", "ModName" : "MoreBanditCamps.esp"},	
 			"Region" : {"FormID" : "0x1676A", "ModName" : "Skyrim.esm"},
-			"Quest" : {"FormID" : "0x110001", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : {"FormID" : "0x86C", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Bandit"	
 		},
 		{
@@ -30,7 +30,7 @@
 			"Difficulty" : "Novice",
 			"Location" : {"FormID" : "0x1D9B8", "ModName" : "MoreBanditCamps.esp"},	
 			"Region" : {"FormID" : "0x1676F", "ModName" : "Skyrim.esm"},
-			"Quest" : {"FormID" : "0x110002", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : {"FormID" : "0x86D", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Bandit"	
 		},
 		{
@@ -38,7 +38,7 @@
 			"Difficulty" : "Adept",
 			"Location" : {"FormID" : "0x1DF24", "ModName" : "MoreBanditCamps.esp"},	
 			"Region" : {"FormID" : "0x1676F", "ModName" : "Skyrim.esm"},
-			"Quest" : {"FormID" : "0x110002", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : {"FormID" : "0x86D", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Bandit"	
 		},
 		{
@@ -46,7 +46,7 @@
 			"Difficulty" : "Master",
 			"Location" : {"FormID" : "0x1BD9D", "ModName" : "MoreBanditCamps.esp"},	
 			"Region" : {"FormID" : "0x1676E", "ModName" : "Skyrim.esm"},
-			"Quest" : {"FormID" : "0x110003", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : {"FormID" : "0x86E", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Bandit"	
 		},
 		{
@@ -54,7 +54,7 @@
 			"Difficulty" : "Adept",
 			"Location" : {"FormID" : "0x1BDBE", "ModName" : "MoreBanditCamps.esp"},	
 			"Region" : {"FormID" : "0x1676E", "ModName" : "Skyrim.esm"},
-			"Quest" : {"FormID" : "0x110003", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : {"FormID" : "0x86E", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Bandit"	
 		},
 		{
@@ -62,7 +62,7 @@
 			"Difficulty" : "Apprentice",
 			"Location" : {"FormID" : "0x1CEA6", "ModName" : "MoreBanditCamps.esp"},	
 			"Region" : {"FormID" : "0x1676E", "ModName" : "Skyrim.esm"},
-			"Quest" : {"FormID" : "0x110003", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : {"FormID" : "0x86E", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Bandit"	
 		},
 		{
@@ -70,7 +70,7 @@
 			"Difficulty" : "Apprentice",
 			"Location" : {"FormID" : "0x1BDC0", "ModName" : "MoreBanditCamps.esp"},	
 			"Region" : {"FormID" : "0x1676E", "ModName" : "Skyrim.esm"},
-			"Quest" : {"FormID" : "0x110004", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : {"FormID" : "0x86F", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Bandit"	
 		},
 		{
@@ -78,7 +78,7 @@
 			"Difficulty" : "Novice",
 			"Location" : {"FormID" : "0x1D426", "ModName" : "MoreBanditCamps.esp"},	
 			"Region" : {"FormID" : "0x1676E", "ModName" : "Skyrim.esm"},
-			"Quest" : {"FormID" : "0x110004", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : {"FormID" : "0x86F", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Bandit"	
 		},
 		{
@@ -86,7 +86,7 @@
 			"Difficulty" : "Novice",
 			"Location" : {"FormID" : "0x1D431", "ModName" : "MoreBanditCamps.esp"},	
 			"Region" : {"FormID" : "0x1676E", "ModName" : "Skyrim.esm"},
-			"Quest" : {"FormID" : "0x110004", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : {"FormID" : "0x86F", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Bandit"	
 		},
 		{
@@ -94,7 +94,7 @@
 			"Difficulty" : "Apprentice",
 			"Location" : {"FormID" : "0x19BF5", "ModName" : "MoreBanditCamps.esp"},	
 			"Region" : {"FormID" : "0x1676D", "ModName" : "Skyrim.esm"},
-			"Quest" : {"FormID" : "0x110005", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : {"FormID" : "0x870", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Bandit"	
 		},
 		{
@@ -102,7 +102,7 @@
 			"Difficulty" : "Apprentice",
 			"Location" : {"FormID" : "0x1DF3C", "ModName" : "MoreBanditCamps.esp"},	
 			"Region" : {"FormID" : "0x1676D", "ModName" : "Skyrim.esm"},
-			"Quest" : {"FormID" : "0x110005", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : {"FormID" : "0x870", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Bandit"	
 		},
 		{
@@ -110,7 +110,7 @@
 			"Difficulty" : "Apprentice",
 			"Location" : {"FormID" : "0x1B223", "ModName" : "MoreBanditCamps.esp"},	
 			"Region" : {"FormID" : "0x16769", "ModName" : "Skyrim.esm"},
-			"Quest" : {"FormID" : "0x110006", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : {"FormID" : "0x871", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Bandit"	
 		},
 		{
@@ -118,7 +118,7 @@
 			"Difficulty" : "Apprentice",
 			"Location" : {"FormID" : "0x1C35E", "ModName" : "MoreBanditCamps.esp"},	
 			"Region" : {"FormID" : "0x16769", "ModName" : "Skyrim.esm"},
-			"Quest" : {"FormID" : "0x110006", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : {"FormID" : "0x871", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Bandit"	
 		},
 		{
@@ -126,7 +126,7 @@
 			"Difficulty" : "Apprentice",
 			"Location" : {"FormID" : "0x1C922", "ModName" : "MoreBanditCamps.esp"},	
 			"Region" : {"FormID" : "0x16769", "ModName" : "Skyrim.esm"},
-			"Quest" : {"FormID" : "0x110006", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : {"FormID" : "0x871", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Bandit"	
 		},
 		{
@@ -134,7 +134,7 @@
 			"Difficulty" : "Novice",
 			"Location" : {"FormID" : "0x1CE91", "ModName" : "MoreBanditCamps.esp"},	
 			"Region" : {"FormID" : "0x16769", "ModName" : "Skyrim.esm"},
-			"Quest" : {"FormID" : "0x110006", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : {"FormID" : "0x871", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Bandit"	
 		},
 		{
@@ -142,7 +142,7 @@
 			"Difficulty" : "Novice",
 			"Location" : {"FormID" : "0x154FE", "ModName" : "MoreBanditCamps.esp"},	
 			"Region" : {"FormID" : "0x16769", "ModName" : "Skyrim.esm"},
-			"Quest" : {"FormID" : "0x110006", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : {"FormID" : "0x871", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Bandit"	
 		},
 		{
@@ -150,7 +150,7 @@
 			"Difficulty" : "Adept",
 			"Location" : {"FormID" : "0x16FF5", "ModName" : "MoreBanditCamps.esp"},	
 			"Region" : {"FormID" : "0x16769", "ModName" : "Skyrim.esm"},
-			"Quest" : {"FormID" : "0x110006", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : {"FormID" : "0x871", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Bandit"	
 		},
 		{
@@ -158,7 +158,7 @@
 			"Difficulty" : "Apprentice",
 			"Location" : {"FormID" : "0x180A9", "ModName" : "MoreBanditCamps.esp"},	
 			"Region" : {"FormID" : "0x1676C", "ModName" : "Skyrim.esm"},
-			"Quest" : {"FormID" : "0x110007", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : {"FormID" : "0x872", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Bandit"	
 		},
 		{
@@ -166,7 +166,7 @@
 			"Difficulty" : "Apprentice",
 			"Location" : {"FormID" : "0x1D44A", "ModName" : "MoreBanditCamps.esp"},	
 			"Region" : {"FormID" : "0x1676C", "ModName" : "Skyrim.esm"},
-			"Quest" : {"FormID" : "0x110007", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : {"FormID" : "0x872", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Bandit"	
 		},
 		{
@@ -174,7 +174,7 @@
 			"Difficulty" : "Adept",
 			"Location" : {"FormID" : "0x1CEA8", "ModName" : "MoreBanditCamps.esp"},	
 			"Region" : {"FormID" : "0x16772", "ModName" : "Skyrim.esm"},
-			"Quest" : {"FormID" : "0x110008", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : {"FormID" : "0x873", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Bandit"	
 		},
 		{
@@ -182,7 +182,7 @@
 			"Difficulty" : "Apprentice",
 			"Location" : {"FormID" : "0x1BDDF", "ModName" : "MoreBanditCamps.esp"},	
 			"Region" : {"FormID" : "0x16772", "ModName" : "Skyrim.esm"},
-			"Quest" : {"FormID" : "0x110008", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : {"FormID" : "0x873", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Bandit"	
 		},
 		{
@@ -190,7 +190,7 @@
 			"Difficulty" : "Adept",
 			"Location" : {"FormID" : "0x1D434", "ModName" : "MoreBanditCamps.esp"},	
 			"Region" : {"FormID" : "0x16772", "ModName" : "Skyrim.esm"},
-			"Quest" : {"FormID" : "0x110008", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : {"FormID" : "0x873", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Bandit"	
 		},
 		{
@@ -198,7 +198,7 @@
 			"Difficulty" : "Expert",
 			"Location" : {"FormID" : "0x1E4B4", "ModName" : "MoreBanditCamps.esp"},	
 			"Region" : {"FormID" : "0x16772", "ModName" : "Skyrim.esm"},
-			"Quest" : {"FormID" : "0x110008", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : {"FormID" : "0x873", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Bandit"	
 		},
 		{
@@ -206,7 +206,7 @@
 			"Difficulty" : "Novice",
 			"Location" : {"FormID" : "0x5F25A", "ModName" : "MoreBanditCamps.esp"},	
 			"Region" : {"FormID" : "0x16772", "ModName" : "Skyrim.esm"},
-			"Quest" : {"FormID" : "0x110008", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : {"FormID" : "0x873", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Bandit"	
 		},
 		{
@@ -214,7 +214,7 @@
 			"Difficulty" : "Master",
 			"Location" : {"FormID" : "0x17AE8", "ModName" : "MoreBanditCamps.esp"},	
 			"Region" : {"FormID" : "0x16772", "ModName" : "Skyrim.esm"},
-			"Quest" : {"FormID" : "0x110008", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : {"FormID" : "0x873", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Bandit"	
 		},
 		{
@@ -222,7 +222,7 @@
 			"Difficulty" : "Apprentice",
 			"Location" : {"FormID" : "0x1A193", "ModName" : "MoreBanditCamps.esp"},	
 			"Region" : {"FormID" : "0x1676B", "ModName" : "Skyrim.esm"},
-			"Quest" : {"FormID" : "0x110009", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : {"FormID" : "0x874", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Bandit"	
 		},
 		{
@@ -230,7 +230,7 @@
 			"Difficulty" : "Novice",
 			"Location" : {"FormID" : "0x1C363", "ModName" : "MoreBanditCamps.esp"},	
 			"Region" : {"FormID" : "0x1676B", "ModName" : "Skyrim.esm"},
-			"Quest" : {"FormID" : "0x110009", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : {"FormID" : "0x874", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Bandit"	
 		},
 		{
@@ -238,7 +238,7 @@
 			"Difficulty" : "Apprentice",
 			"Location" : {"FormID" : "0x1DF20", "ModName" : "MoreBanditCamps.esp"},	
 			"Region" : {"FormID" : "0x1676B", "ModName" : "Skyrim.esm"},
-			"Quest" : {"FormID" : "0x110009", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : {"FormID" : "0x874", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Bandit"	
 		},
 		{
@@ -246,7 +246,7 @@
 			"Difficulty" : "Master",
 			"Location" : {"FormID" : "0x1E4C6", "ModName" : "MoreBanditCamps.esp"},	
 			"Region" : {"FormID" : "0x1676B", "ModName" : "Skyrim.esm"},
-			"Quest" : {"FormID" : "0x110009", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : {"FormID" : "0x874", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Bandit"	
 		}
 	]	

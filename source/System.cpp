@@ -125,6 +125,25 @@ void System::ParseRewards()
     }
 }
 
+void System::ParseTexts()
+{
+    const auto util = Util::GetSingleton();
+
+    std::ifstream path("Data/SKSE/Plugins/Bounty Quests Redone - NG/Texts.json");
+    json config = json::parse(path);
+    const json& textArray = config["Texts"];
+
+    for (const auto& text : textArray.array_range()) {
+        util->SetText(Util::TEXT::Objective, text["Objective"].as<std::string>());
+        util->SetText(Util::TEXT::Novice, text["Novice"].as<std::string>());
+        util->SetText(Util::TEXT::Apprentice, text["Apprentice"].as<std::string>());
+        util->SetText(Util::TEXT::Adept, text["Adept"].as<std::string>());
+        util->SetText(Util::TEXT::Expert, text["Expert"].as<std::string>());
+        util->SetText(Util::TEXT::Master, text["Master"].as<std::string>());
+        util->SetText(Util::TEXT::Legendary, text["Legendary"].as<std::string>());
+    }
+}
+
 void System::ParseTrackers()
 {
     std::ifstream path("Data/SKSE/Plugins/Bounty Quests Redone - NG/Trackers.json");
@@ -175,7 +194,14 @@ void System::RewardPlayer(RE::BGSLocation* a_region)
 
             if (form) {
                 for (auto& amount : reward.amount) {
-                    auto times = data->GetTracker(a_region, amount.first);
+                    std::uint32_t times = 0U;
+                    auto trackers = data->GetTrackers();
+
+                    for (auto& tracker : trackers) {
+                        if (tracker->region == a_region) {
+                            times = tracker->reward[amount.first];
+                        }
+                    }
 
                     if (amount.second && times > 0U) {
                         const auto quantity = amount.second * times;
@@ -268,10 +294,21 @@ void System::StartQuests()
                     
                         for (const auto& objective : quest->quest->objectives) {
                             if (objective->index == referenceAlias->aliasID) {
-                                if (objective->displayText.back() == ' ') {
-                                    objective->displayText = Util::GetSingleton()->GetDifficulty(quest->difficulty) + ": " + static_cast<std::string>(objective->displayText) + quest->location->GetName();
+                                auto util = Util::GetSingleton();
+                                auto text = util->GetText(Util::TEXT::Objective);
+
+                                auto result = text.replace(text.find("%d"), 2, util->GetDifficulty(quest->difficulty));
+
+                                if (objective->index < 10) {
+                                    result = result.replace(result.find("%i"), 2, "0" + std::to_string(objective->index));
+                                } else {
+                                    result = result.replace(result.find("%i"), 2, std::to_string(objective->index));
                                 }
-                            
+
+                                result = result.replace(result.find("%l"), 2, quest->location->GetName());
+
+                                objective->displayText = result;
+
                                 Serialization::GetSingleton()->SerializeObjectivesText(quest->quest, quest->location, objective->index, objective->displayText.c_str());
                                 quest->objectiveIndex = objective->index;
                                 SetObjectiveState(objective, RE::QUEST_OBJECTIVE_STATE::kDisplayed);
@@ -305,7 +342,7 @@ void System::StartRandomQuest(RE::BGSLocation* a_region, Util::TYPE a_type)
 
     const auto random = std::rand() % temporary.size();
 
-    AddToQueue(quests[random]);
+    AddToQueue(temporary[random]);
     ParseQueue();
 }
 
@@ -317,7 +354,7 @@ void System::UpdateGlobals()
     auto hasBandit = dataHandler->LookupForm<RE::TESGlobal>(Offsets::Forms::BQRNG_RegionHasBandit, "Bounty Quests Redone - NG.esl");
     auto hasDragon = dataHandler->LookupForm<RE::TESGlobal>(Offsets::Forms::BQRNG_RegionHasDragon, "Bounty Quests Redone - NG.esl");
     auto hasDraugr = dataHandler->LookupForm<RE::TESGlobal>(Offsets::Forms::BQRNG_RegionHasDraugr, "Bounty Quests Redone - NG.esl");
-    auto hasDwarven = dataHandler->LookupForm<RE::TESGlobal>(Offsets::Forms::BQRNG_RegionHasDwarven, "Bounty Quests Redone - NG.esl");
+    auto hasDwemer = dataHandler->LookupForm<RE::TESGlobal>(Offsets::Forms::BQRNG_RegionHasDwemer, "Bounty Quests Redone - NG.esl");
     auto hasFalmer = dataHandler->LookupForm<RE::TESGlobal>(Offsets::Forms::BQRNG_RegionHasFalmer, "Bounty Quests Redone - NG.esl");
     auto hasForsworn = dataHandler->LookupForm<RE::TESGlobal>(Offsets::Forms::BQRNG_RegionHasForsworn, "Bounty Quests Redone - NG.esl");
     auto hasGiant = dataHandler->LookupForm<RE::TESGlobal>(Offsets::Forms::BQRNG_RegionHasGiant, "Bounty Quests Redone - NG.esl");
@@ -329,7 +366,7 @@ void System::UpdateGlobals()
     hasBandit->value = 0U;
     hasDragon->value = 0U;
     hasDraugr->value = 0U;
-    hasDwarven->value = 0U;
+    hasDwemer->value = 0U;
     hasFalmer->value = 0U;
     hasForsworn->value = 0U;
     hasGiant->value = 0U;
@@ -346,8 +383,8 @@ void System::UpdateGlobals()
                 hasDragon->value = 1U;
             } else if (quest->type == Util::TYPE::Draugr) {
                 hasDraugr->value = 1U;
-            } else if (quest->type == Util::TYPE::Dwarven) {
-                hasDwarven->value = 1U;
+            } else if (quest->type == Util::TYPE::Dwemer) {
+                hasDwemer->value = 1U;
             } else if (quest->type == Util::TYPE::Falmer) {
                 hasFalmer->value = 1U;
             } else if (quest->type == Util::TYPE::Forsworn) {
@@ -370,12 +407,11 @@ void System::UpdateGlobals()
 void System::UpdateLocationAlias(RE::TESQuest* a_quest, RE::BGSLocation* a_location)
 {
     if (a_quest && a_location) {
-
         for (auto& alias : a_quest->aliases) {
             if (alias->aliasID == 0) {
                 a_quest->Stop();
                 auto location = static_cast<RE::BGSLocAlias*>(alias);
-                location->unk28 = reinterpret_cast<uint64_t>(a_location);
+                location->unk28 = reinterpret_cast<std::uint64_t>(a_location);
                 bool result;
                 a_quest->EnsureQuestStarted(result, false);
                 break;

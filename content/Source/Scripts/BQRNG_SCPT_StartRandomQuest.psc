@@ -6,7 +6,7 @@ Scriptname BQRNG_SCPT_StartRandomQuest Extends TopicInfo Hidden
 Function Fragment_2(ObjectReference akSpeakerRef)
 Actor akSpeaker = akSpeakerRef as Actor
 ;BEGIN CODE
-BQRNG.StartRandomQuest((Self.GetOwningQuest().GetAlias(2) As LOCATIONALIAS).GetLocation(), Type)
+BQRNG.StartRandomQuest((Self.GetOwningQuest().GetAlias(0) As LOCATIONALIAS).GetLocation(), Type)
 ;END CODE
 EndFunction
 ;END FRAGMENT

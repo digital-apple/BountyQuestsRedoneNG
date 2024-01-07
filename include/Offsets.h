@@ -21,7 +21,7 @@ namespace Offsets
         static RE::FormID BQRNG_RegionHasBandit{ 0x876 };
         static RE::FormID BQRNG_RegionHasDragon{ 0x877 };
         static RE::FormID BQRNG_RegionHasDraugr{ 0x878 };
-        static RE::FormID BQRNG_RegionHasDwarven{ 0x879 };
+        static RE::FormID BQRNG_RegionHasDwemer{ 0x879 };
         static RE::FormID BQRNG_RegionHasFalmer{ 0x87A };
         static RE::FormID BQRNG_RegionHasForsworn{ 0x87B };
         static RE::FormID BQRNG_RegionHasGiant{ 0x87C };

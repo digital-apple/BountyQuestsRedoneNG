@@ -2,43 +2,53 @@
 	"Trackers" :
 	[
 		{
-			"GlobalVariable" : {"FormID" : "0x100040", "ModName" : "Bounty Quests Redone - NG.esp"},
+			"Name" : "Eastmarch",
+			"GlobalVariable" : {"FormID" : "0x838", "ModName" : "Bounty Quests Redone - NG.esl"},
 			"Region" : {"FormID" : "0x1676A", "ModName" : "Skyrim.esm"}
 		},
 		{
-			"GlobalVariable" : {"FormID" : "0x100041", "ModName" : "Bounty Quests Redone - NG.esp"},
+			"Name" : "Falkreath",
+			"GlobalVariable" : {"FormID" : "0x839", "ModName" : "Bounty Quests Redone - NG.esl"},
 			"Region" : {"FormID" : "0x1676F", "ModName" : "Skyrim.esm"}
 		},
 		{
-			"GlobalVariable" : {"FormID" : "0x100042", "ModName" : "Bounty Quests Redone - NG.esp"},
+			"Name" : "Haafingar",
+			"GlobalVariable" : {"FormID" : "0x83A", "ModName" : "Bounty Quests Redone - NG.esl"},
 			"Region" : {"FormID" : "0x16770", "ModName" : "Skyrim.esm"}
 		},
 		{
-			"GlobalVariable" : {"FormID" : "0x100043", "ModName" : "Bounty Quests Redone - NG.esp"},
+			"Name" : "Hjaalmarch",
+			"GlobalVariable" : {"FormID" : "0x83B", "ModName" : "Bounty Quests Redone - NG.esl"},
 			"Region" : {"FormID" : "0x1676E", "ModName" : "Skyrim.esm"}
 		},
 		{
-			"GlobalVariable" : {"FormID" : "0x100044", "ModName" : "Bounty Quests Redone - NG.esp"},
+			"Name" : "The Pale",
+			"GlobalVariable" : {"FormID" : "0x83C", "ModName" : "Bounty Quests Redone - NG.esl"},
 			"Region" : {"FormID" : "0x1676D", "ModName" : "Skyrim.esm"}
 		},
 		{
-			"GlobalVariable" : {"FormID" : "0x100045", "ModName" : "Bounty Quests Redone - NG.esp"},
+			"Name" : "The Reach",
+			"GlobalVariable" : {"FormID" : "0x83D", "ModName" : "Bounty Quests Redone - NG.esl"},
 			"Region" : {"FormID" : "0x16769", "ModName" : "Skyrim.esm"}
 		},
 		{
-			"GlobalVariable" : {"FormID" : "0x100046", "ModName" : "Bounty Quests Redone - NG.esp"},
+			"Name" : "The Rift",
+			"GlobalVariable" : {"FormID" : "0x83E", "ModName" : "Bounty Quests Redone - NG.esl"},
 			"Region" : {"FormID" : "0x1676C", "ModName" : "Skyrim.esm"}
 		},
 		{
-			"GlobalVariable" : {"FormID" : "0x10003F", "ModName" : "Bounty Quests Redone - NG.esp"},
+			"Name" : "Whiterun",
+			"GlobalVariable" : {"FormID" : "0x837", "ModName" : "Bounty Quests Redone - NG.esl"},
 			"Region" : {"FormID" : "0x16772", "ModName" : "Skyrim.esm"}
 		},
 		{
-			"GlobalVariable" : {"FormID" : "0x100047", "ModName" : "Bounty Quests Redone - NG.esp"},
+			"Name" : "Winterhold",
+			"GlobalVariable" : {"FormID" : "0x83F", "ModName" : "Bounty Quests Redone - NG.esl"},
 			"Region" : {"FormID" : "0x1676B", "ModName" : "Skyrim.esm"}
 		},
 		{
-			"GlobalVariable" : {"FormID" : "0x100048", "ModName" : "Bounty Quests Redone - NG.esp"},
+			"Name" : "Solstheim",
+			"GlobalVariable" : {"FormID" : "0x840", "ModName" : "Bounty Quests Redone - NG.esl"},
 			"Region" : {"FormID" : "0x16E2A", "ModName" : "Dragonborn.esm"}
 		}		
 	]

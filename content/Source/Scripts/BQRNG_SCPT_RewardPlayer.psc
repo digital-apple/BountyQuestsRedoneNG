@@ -6,7 +6,7 @@ Scriptname BQRNG_SCPT_RewardPlayer Extends TopicInfo Hidden
 Function Fragment_0(ObjectReference akSpeakerRef)
 Actor akSpeaker = akSpeakerRef as Actor
 ;BEGIN CODE
-BQRNG.RewardPlayer((Self.GetOwningQuest().GetAlias(2) As LOCATIONALIAS).GetLocation())
+BQRNG.RewardPlayer((Self.GetOwningQuest().GetAlias(0) As LOCATIONALIAS).GetLocation())
 ;END CODE
 EndFunction
 ;END FRAGMENT

@@ -41,6 +41,7 @@ public:
     void ParseQueue();
     void ParseRewards();
     void ParseTrackers();
+    void ParseTexts();
     void PopulateMenu(RE::BGSLocation* a_region, Util::TYPE a_type);
     void RewardPlayer(RE::BGSLocation* a_region);
     void ShowGiftMenu(RE::TESObjectREFR* a_target, RE::TESObjectREFR* a_source);

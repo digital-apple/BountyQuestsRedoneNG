@@ -1,10 +1,5 @@
 #include "Util.h"
 
-auto Util::GetCatalogue() const -> RE::TESQuest*
-{
-    return RE::TESDataHandler::GetSingleton()->LookupForm<RE::TESQuest>(Offsets::Forms::BQRNG_Catalogue, "Bounty Quests Redone - NG.esl");
-}
-
 auto Util::GetDifficulty(std::string a_string) -> Util::DIFFICULTY
 {
     std::transform(std::begin(a_string), std::end(a_string), std::begin(a_string), [](unsigned char c)->unsigned char { return static_cast<unsigned char>(std::tolower(c)); });
@@ -28,27 +23,26 @@ auto Util::GetDifficulty(std::string a_string) -> Util::DIFFICULTY
 auto Util::GetDifficulty(Util::DIFFICULTY a_difficulty) -> std::string
 {
     switch (a_difficulty) {
-        case DIFFICULTY::Novice:
-            return "Novice";
-            break;
-        case DIFFICULTY::Apprentice:
-            return "Apprentice";
-            break;
-        case DIFFICULTY::Adept:
-            return "Adept";
-            break;
-        case DIFFICULTY::Expert:
-            return "Expert";
-            break;
-        case DIFFICULTY::Master:
-            return "Master";
-            break;
-        case DIFFICULTY::Legendary:
-            return "Legendary";
-            break;
-        default:
-            return "None";
-            break;
+    case DIFFICULTY::Novice:
+        return GetText(Util::TEXT::Novice);
+        break;
+    case DIFFICULTY::Apprentice:
+        return GetText(Util::TEXT::Apprentice);
+        break;
+    case DIFFICULTY::Adept:
+        return GetText(Util::TEXT::Adept);
+        break;
+    case DIFFICULTY::Expert:
+        return GetText(Util::TEXT::Expert);
+        break;
+    case DIFFICULTY::Master:
+        return GetText(Util::TEXT::Master);
+        break;
+    case DIFFICULTY::Legendary:
+        return GetText(Util::TEXT::Legendary);
+        break;
+    default:
+        return "None";
     }
 }
 
@@ -62,6 +56,11 @@ auto Util::GetQuest(RE::FormID a_formID, std::string a_modName) const -> RE::TES
     return RE::TESDataHandler::GetSingleton()->LookupForm<RE::TESQuest>(a_formID, a_modName);
 }
 
+auto Util::GetText(Util::TEXT a_text) -> std::string
+{
+    return text[a_text];
+}
+
 auto Util::GetType(std::string a_string) -> Util::TYPE
 {
     std::transform(std::begin(a_string), std::end(a_string), std::begin(a_string), [](unsigned char c)->unsigned char { return static_cast<unsigned char>(std::tolower(c)); });
@@ -71,8 +70,8 @@ auto Util::GetType(std::string a_string) -> Util::TYPE
         return TYPE::Dragon;
     } else if (a_string == "draugr") {
         return TYPE::Draugr;
-    } else if (a_string == "dwarven") {
-        return TYPE::Dwarven;
+    } else if (a_string == "dwemer") {
+        return TYPE::Dwemer;
     } else if (a_string == "falmer") {
         return TYPE::Falmer;
     } else if (a_string == "forsworn") {
@@ -90,4 +89,10 @@ auto Util::GetType(std::string a_string) -> Util::TYPE
     } else {
         return TYPE::None;
     }
+}
+
+void Util::SetText(Util::TEXT a_text, std::string a_string)
+{
+    logs::info("Util::SetText :: Trying to parse key & text: '{}' -> '{}'", static_cast<std::uint32_t>(a_text), a_string);
+    text.try_emplace(a_text, a_string);
 }

@@ -54,9 +54,23 @@ EventResult Events::ProcessEvent(const RE::TESActorLocationChangeEvent* a_event,
         if (actor == RE::PlayerCharacter::GetSingleton()) {
 
             if (auto newLocation = a_event->newLoc; newLocation) {
-                const auto BQRNG_Catalogue = Util::GetSingleton()->GetCatalogue();
-                System::GetSingleton()->UpdateLocationAlias(BQRNG_Catalogue, newLocation);
-            } 
+                logs::info("Events::TESActorLocationChangeEvent :: Passing location: '{}'", newLocation->GetName());
+                auto trackers = Serialization::GetSingleton()->GetTrackers();
+
+                for (auto& tracker : trackers) {
+                    auto currentLocation = newLocation;
+                    logs::info("Events::TESActorLocationChangeEvent :: Current Tracker: '{:x}' | '{}' | '{:x}'", tracker->global->GetFormID(), tracker->region->GetName(), tracker->region->GetFormID());
+                    while (currentLocation) {
+                        if (tracker->region == currentLocation) {
+                            logs::info("Events::TESActorLocationChangeEvent :: Found parent region: '{}' | '{:x}'", currentLocation->GetName(), currentLocation->GetFormID());
+                            const auto BQRNG_Catalogue = Util::GetSingleton()->GetQuest(Offsets::Forms::BQRNG_Catalogue, "Bounty Quests Redone - NG.esl");
+                            System::GetSingleton()->UpdateLocationAlias(BQRNG_Catalogue, currentLocation);
+                            break;
+                        }
+                        currentLocation = currentLocation->parentLoc;
+                    }
+                }
+            }
         }
     }
 

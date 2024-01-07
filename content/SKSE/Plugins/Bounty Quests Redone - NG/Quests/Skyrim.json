@@ -6,7 +6,7 @@
 			"Difficulty" : "Adept",
 			"Location" : {"FormID" : "0x19159", "ModName" : "Skyrim.esm"},	
 			"Region" : {"FormID" : "0x1676A", "ModName" : "Skyrim.esm"},
-			"Quest" : {"FormID" : "0x110001", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : {"FormID" : "0x86C", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Bandit"	
 		},
 		{
@@ -14,7 +14,7 @@
 			"Difficulty" : "Expert",
 			"Location" : {"FormID" : "0x19267", "ModName" : "Skyrim.esm"},	
 			"Region" : {"FormID" : "0x1676A", "ModName" : "Skyrim.esm"},
-			"Quest" : {"FormID" : "0x110001", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : {"FormID" : "0x86C", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Bandit"	
 		},
 		{
@@ -22,7 +22,7 @@
 			"Difficulty" : "Apprentice",
 			"Location" : {"FormID" : "0x80F28", "ModName" : "Skyrim.esm"},	
 			"Region" : {"FormID" : "0x1676A", "ModName" : "Skyrim.esm"},
-			"Quest" : {"FormID" : "0x110001", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : {"FormID" : "0x86C", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Bandit"	
 		},
 		{
@@ -30,7 +30,7 @@
 			"Difficulty" : "Apprentice",
 			"Location" : {"FormID" : "0xC2EE7", "ModName" : "Skyrim.esm"},	
 			"Region" : {"FormID" : "0x1676A", "ModName" : "Skyrim.esm"},
-			"Quest" : {"FormID" : "0x110001", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : {"FormID" : "0x86C", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Bandit"	
 		},
 		{
@@ -38,7 +38,7 @@
 			"Difficulty" : "Master",
 			"Location" : {"FormID" : "0x192C0", "ModName" : "Skyrim.esm"},	
 			"Region" : {"FormID" : "0x1676A", "ModName" : "Skyrim.esm"},
-			"Quest" : {"FormID" : "0x110001", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : {"FormID" : "0x86C", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Bandit"	
 		},
 		{
@@ -46,7 +46,7 @@
 			"Difficulty" : "Master",
 			"Location" : {"FormID" : "0xECF88", "ModName" : "Skyrim.esm"},	
 			"Region" : {"FormID" : "0x1676A", "ModName" : "Skyrim.esm"},
-			"Quest" : {"FormID" : "0x110001", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : {"FormID" : "0x86C", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Giant"	
 		},
 		{
@@ -54,7 +54,7 @@
 			"Difficulty" : "Master",
 			"Location" : {"FormID" : "0x19158", "ModName" : "Skyrim.esm"},	
 			"Region" : {"FormID" : "0x1676A", "ModName" : "Skyrim.esm"},
-			"Quest" : {"FormID" : "0x110001", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : {"FormID" : "0x86C", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Giant"	
 		},
 		{
@@ -62,7 +62,7 @@
 			"Difficulty" : "Master",
 			"Location" : {"FormID" : "0x1916D", "ModName" : "Skyrim.esm"},	
 			"Region" : {"FormID" : "0x1676A", "ModName" : "Skyrim.esm"},
-			"Quest" : {"FormID" : "0x110001", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : {"FormID" : "0x86C", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Giant"	
 		},
 		{
@@ -70,7 +70,7 @@
 			"Difficulty" : "Legendary",
 			"Location" : {"FormID" : "0x1916B", "ModName" : "Skyrim.esm"},	
 			"Region" : {"FormID" : "0x1676A", "ModName" : "Skyrim.esm"},
-			"Quest" : {"FormID" : "0x110001", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : {"FormID" : "0x86C", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Dragon"	
 		},		
 		{
@@ -78,7 +78,7 @@
 			"Difficulty" : "Novice",
 			"Location" : {"FormID" : "0x47825", "ModName" : "Skyrim.esm"},	
 			"Region" : {"FormID" : "0x1676F", "ModName" : "Skyrim.esm"},
-			"Quest" : {"FormID" : "0x110002", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : {"FormID" : "0x86D", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Bandit"	
 		},
 		{
@@ -86,7 +86,7 @@
 			"Difficulty" : "Apprentice",
 			"Location" : {"FormID" : "0x19269", "ModName" : "Skyrim.esm"},	
 			"Region" : {"FormID" : "0x1676F", "ModName" : "Skyrim.esm"},
-			"Quest" : {"FormID" : "0x110002", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : {"FormID" : "0x86D", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Bandit"	
 		},
 		{
@@ -94,7 +94,7 @@
 			"Difficulty" : "Adept",
 			"Location" : {"FormID" : "0x1918D", "ModName" : "Skyrim.esm"},	
 			"Region" : {"FormID" : "0x1676F", "ModName" : "Skyrim.esm"},
-			"Quest" : {"FormID" : "0x110002", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : {"FormID" : "0x86D", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Bandit"	
 		},
 		{
@@ -102,7 +102,7 @@
 			"Difficulty" : "Expert",
 			"Location" : {"FormID" : "0xB712C", "ModName" : "Skyrim.esm"},	
 			"Region" : {"FormID" : "0x1676F", "ModName" : "Skyrim.esm"},
-			"Quest" : {"FormID" : "0x110002", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : {"FormID" : "0x86D", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Bandit"	
 		},
 		{
@@ -110,7 +110,7 @@
 			"Difficulty" : "Expert",
 			"Location" : {"FormID" : "0x8E1B7", "ModName" : "Skyrim.esm"},	
 			"Region" : {"FormID" : "0x1676F", "ModName" : "Skyrim.esm"},
-			"Quest" : {"FormID" : "0x110002", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : {"FormID" : "0x86D", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Bandit"	
 		},
 		{
@@ -118,7 +118,7 @@
 			"Difficulty" : "Master",
 			"Location" : {"FormID" : "0x1928A", "ModName" : "Skyrim.esm"},	
 			"Region" : {"FormID" : "0x1676F", "ModName" : "Skyrim.esm"},
-			"Quest" : {"FormID" : "0x110002", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : {"FormID" : "0x86D", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Bandit"	
 		},
 		{
@@ -126,7 +126,7 @@
 			"Difficulty" : "Legendary",
 			"Location" : {"FormID" : "0x19166", "ModName" : "Skyrim.esm"},	
 			"Region" : {"FormID" : "0x1676F", "ModName" : "Skyrim.esm"},
-			"Quest" : {"FormID" : "0x110002", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : {"FormID" : "0x86D", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Dragon"	
 		},
 		{
@@ -134,7 +134,7 @@
 			"Difficulty" : "Adept",
 			"Location" : {"FormID" : "0x19153", "ModName" : "Skyrim.esm"},	
 			"Region" : {"FormID" : "0x16770", "ModName" : "Skyrim.esm"},
-			"Quest" : {"FormID" : "0x110003", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : {"FormID" : "0x86E", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Bandit"	
 		},
 		{
@@ -142,7 +142,7 @@
 			"Difficulty" : "Expert",
 			"Location" : {"FormID" : "0x7B91A", "ModName" : "Skyrim.esm"},	
 			"Region" : {"FormID" : "0x16770", "ModName" : "Skyrim.esm"},
-			"Quest" : {"FormID" : "0x110003", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : {"FormID" : "0x86E", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Bandit"	
 		},
 		{
@@ -150,7 +150,7 @@
 			"Difficulty" : "Novice",
 			"Location" : {"FormID" : "0xEF546", "ModName" : "Skyrim.esm"},	
 			"Region" : {"FormID" : "0x16770", "ModName" : "Skyrim.esm"},
-			"Quest" : {"FormID" : "0x110003", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : {"FormID" : "0x86E", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Bandit"	
 		},
 		{
@@ -158,7 +158,7 @@
 			"Difficulty" : "Novice",
 			"Location" : {"FormID" : "0x192A5", "ModName" : "Skyrim.esm"},	
 			"Region" : {"FormID" : "0x16770", "ModName" : "Skyrim.esm"},
-			"Quest" : {"FormID" : "0x110003", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : {"FormID" : "0x86E", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Bandit"	
 		},
 		{
@@ -166,7 +166,7 @@
 			"Difficulty" : "Apprentice",
 			"Location" : {"FormID" : "0x19286", "ModName" : "Skyrim.esm"},	
 			"Region" : {"FormID" : "0x1676E", "ModName" : "Skyrim.esm"},
-			"Quest" : {"FormID" : "0x110004", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : {"FormID" : "0x86F", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Bandit"	
 		},
 		{
@@ -174,7 +174,7 @@
 			"Difficulty" : "Adept",
 			"Location" : {"FormID" : "0x1929B", "ModName" : "Skyrim.esm"},	
 			"Region" : {"FormID" : "0x1676E", "ModName" : "Skyrim.esm"},
-			"Quest" : {"FormID" : "0x110004", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : {"FormID" : "0x86F", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Bandit"	
 		},
 		{
@@ -182,7 +182,7 @@
 			"Difficulty" : "Master",
 			"Location" : {"FormID" : "0x192BA", "ModName" : "Skyrim.esm"},	
 			"Region" : {"FormID" : "0x1676E", "ModName" : "Skyrim.esm"},
-			"Quest" : {"FormID" : "0x110004", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : {"FormID" : "0x86F", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Giant"	
 		},
 		{
@@ -190,7 +190,7 @@
 			"Difficulty" : "Legendary",
 			"Location" : {"FormID" : "0x19164", "ModName" : "Skyrim.esm"},	
 			"Region" : {"FormID" : "0x1676E", "ModName" : "Skyrim.esm"},
-			"Quest" : {"FormID" : "0x110004", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : {"FormID" : "0x86F", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Dragon"	
 		},
 		{
@@ -198,7 +198,7 @@
 			"Difficulty" : "Legendary",
 			"Location" : {"FormID" : "0x19165", "ModName" : "Skyrim.esm"},	
 			"Region" : {"FormID" : "0x1676E", "ModName" : "Skyrim.esm"},
-			"Quest" : {"FormID" : "0x110004", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : {"FormID" : "0x86F", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Dragon"	
 		},	
 {
@@ -206,7 +206,7 @@
 			"Difficulty" : "Master",
 			"Location" : {"FormID" : "0x18EEE", "ModName" : "Skyrim.esm"},	
 			"Region" : {"FormID" : "0x1676D", "ModName" : "Skyrim.esm"},
-			"Quest" : {"FormID" : "0x110005", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : {"FormID" : "0x870", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Giant"	
 		},
 		{
@@ -214,7 +214,7 @@
 			"Difficulty" : "Master",
 			"Location" : {"FormID" : "0x19294", "ModName" : "Skyrim.esm"},	
 			"Region" : {"FormID" : "0x1676D", "ModName" : "Skyrim.esm"},
-			"Quest" : {"FormID" : "0x110005", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : {"FormID" : "0x870", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Giant"	
 		},
 		{
@@ -222,7 +222,7 @@
 			"Difficulty" : "Master",
 			"Location" : {"FormID" : "0x192B7", "ModName" : "Skyrim.esm"},	
 			"Region" : {"FormID" : "0x1676D", "ModName" : "Skyrim.esm"},
-			"Quest" : {"FormID" : "0x110005", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : {"FormID" : "0x870", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Giant"	
 		},
 		{
@@ -230,7 +230,7 @@
 			"Difficulty" : "Master",
 			"Location" : {"FormID" : "0x192BE", "ModName" : "Skyrim.esm"},	
 			"Region" : {"FormID" : "0x1676D", "ModName" : "Skyrim.esm"},
-			"Quest" : {"FormID" : "0x110005", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : {"FormID" : "0x870", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Giant"	
 		},
 		{
@@ -238,7 +238,7 @@
 			"Difficulty" : "Legendary",
 			"Location" : {"FormID" : "0x1916C", "ModName" : "Skyrim.esm"},	
 			"Region" : {"FormID" : "0x1676D", "ModName" : "Skyrim.esm"},
-			"Quest" : {"FormID" : "0x110005", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : {"FormID" : "0x870", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Dragon"	
 		},			
 		{
@@ -246,7 +246,7 @@
 			"Difficulty" : "Novice",
 			"Location" : {"FormID" : "0xB23AC", "ModName" : "Skyrim.esm"},	
 			"Region" : {"FormID" : "0x16769", "ModName" : "Skyrim.esm"},
-			"Quest" : {"FormID" : "0x110006", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : {"FormID" : "0x871", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Bandit"	
 		},
 		{
@@ -254,7 +254,7 @@
 			"Difficulty" : "Adept",
 			"Location" : {"FormID" : "0x18EEC", "ModName" : "Skyrim.esm"},	
 			"Region" : {"FormID" : "0x16769", "ModName" : "Skyrim.esm"},
-			"Quest" : {"FormID" : "0x110006", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : {"FormID" : "0x871", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Forsworn"	
 		},
 		{
@@ -262,7 +262,7 @@
 			"Difficulty" : "Master",
 			"Location" : {"FormID" : "0x18EED", "ModName" : "Skyrim.esm"},	
 			"Region" : {"FormID" : "0x16769", "ModName" : "Skyrim.esm"},
-			"Quest" : {"FormID" : "0x110006", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : {"FormID" : "0x871", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Forsworn"	
 		},
 		{
@@ -270,7 +270,7 @@
 			"Difficulty" : "Expert",
 			"Location" : {"FormID" : "0x1914F", "ModName" : "Skyrim.esm"},	
 			"Region" : {"FormID" : "0x16769", "ModName" : "Skyrim.esm"},
-			"Quest" : {"FormID" : "0x110006", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : {"FormID" : "0x871", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Forsworn"	
 		},
 		{
@@ -278,7 +278,7 @@
 			"Difficulty" : "Apprentice",
 			"Location" : {"FormID" : "0x19151", "ModName" : "Skyrim.esm"},	
 			"Region" : {"FormID" : "0x16769", "ModName" : "Skyrim.esm"},
-			"Quest" : {"FormID" : "0x110006", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : {"FormID" : "0x871", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Forsworn"	
 		},
 		{
@@ -286,7 +286,7 @@
 			"Difficulty" : "Adept",
 			"Location" : {"FormID" : "0xB239F", "ModName" : "Skyrim.esm"},	
 			"Region" : {"FormID" : "0x16769", "ModName" : "Skyrim.esm"},
-			"Quest" : {"FormID" : "0x110006", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : {"FormID" : "0x871", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Forsworn"	
 		},
 		{
@@ -294,7 +294,7 @@
 			"Difficulty" : "Apprentice",
 			"Location" : {"FormID" : "0x19160", "ModName" : "Skyrim.esm"},	
 			"Region" : {"FormID" : "0x16769", "ModName" : "Skyrim.esm"},
-			"Quest" : {"FormID" : "0x110006", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : {"FormID" : "0x871", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Forsworn"	
 		},
 		{
@@ -302,7 +302,7 @@
 			"Difficulty" : "Adept",
 			"Location" : {"FormID" : "0x19162", "ModName" : "Skyrim.esm"},	
 			"Region" : {"FormID" : "0x16769", "ModName" : "Skyrim.esm"},
-			"Quest" : {"FormID" : "0x110006", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : {"FormID" : "0x871", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Forsworn"	
 		},
 		{
@@ -310,7 +310,7 @@
 			"Difficulty" : "Novice",
 			"Location" : {"FormID" : "0xB2395", "ModName" : "Skyrim.esm"},	
 			"Region" : {"FormID" : "0x16769", "ModName" : "Skyrim.esm"},
-			"Quest" : {"FormID" : "0x110006", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : {"FormID" : "0x871", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Forsworn"	
 		},
 		{
@@ -318,7 +318,7 @@
 			"Difficulty" : "Adept",
 			"Location" : {"FormID" : "0x1916F", "ModName" : "Skyrim.esm"},	
 			"Region" : {"FormID" : "0x16769", "ModName" : "Skyrim.esm"},
-			"Quest" : {"FormID" : "0x110006", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : {"FormID" : "0x871", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Forsworn"	
 		},
 		{
@@ -326,7 +326,7 @@
 			"Difficulty" : "Expert",
 			"Location" : {"FormID" : "0x19190", "ModName" : "Skyrim.esm"},	
 			"Region" : {"FormID" : "0x16769", "ModName" : "Skyrim.esm"},
-			"Quest" : {"FormID" : "0x110006", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : {"FormID" : "0x871", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Forsworn"	
 		},
 		{
@@ -334,7 +334,7 @@
 			"Difficulty" : "Master",
 			"Location" : {"FormID" : "0x19268", "ModName" : "Skyrim.esm"},	
 			"Region" : {"FormID" : "0x16769", "ModName" : "Skyrim.esm"},
-			"Quest" : {"FormID" : "0x110006", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : {"FormID" : "0x871", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Forsworn"	
 		},
 		{
@@ -342,7 +342,7 @@
 			"Difficulty" : "Master",
 			"Location" : {"FormID" : "0x19170", "ModName" : "Skyrim.esm"},	
 			"Region" : {"FormID" : "0x16769", "ModName" : "Skyrim.esm"},
-			"Quest" : {"FormID" : "0x110006", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : {"FormID" : "0x871", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Forsworn"	
 		},
 		{
@@ -350,7 +350,7 @@
 			"Difficulty" : "Master",
 			"Location" : {"FormID" : "0x192C4", "ModName" : "Skyrim.esm"},	
 			"Region" : {"FormID" : "0x16769", "ModName" : "Skyrim.esm"},
-			"Quest" : {"FormID" : "0x110006", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : {"FormID" : "0x871", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Forsworn"	
 		},
 		{
@@ -358,7 +358,7 @@
 			"Difficulty" : "Legendary",
 			"Location" : {"FormID" : "0x19163", "ModName" : "Skyrim.esm"},	
 			"Region" : {"FormID" : "0x16769", "ModName" : "Skyrim.esm"},
-			"Quest" : {"FormID" : "0x110006", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : {"FormID" : "0x871", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Dragon"	
 		},		
 		{
@@ -366,7 +366,7 @@
 			"Difficulty" : "Apprentice",
 			"Location" : {"FormID" : "0x1914E", "ModName" : "Skyrim.esm"},	
 			"Region" : {"FormID" : "0x1676C", "ModName" : "Skyrim.esm"},
-			"Quest" : {"FormID" : "0x110007", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : {"FormID" : "0x872", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Bandit"	
 		},
 		{
@@ -374,7 +374,7 @@
 			"Difficulty" : "Novice",
 			"Location" : {"FormID" : "0xD566F", "ModName" : "Skyrim.esm"},	
 			"Region" : {"FormID" : "0x1676C", "ModName" : "Skyrim.esm"},
-			"Quest" : {"FormID" : "0x110007", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : {"FormID" : "0x872", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Bandit"	
 		},
 		{
@@ -382,7 +382,7 @@
 			"Difficulty" : "Adept",
 			"Location" : {"FormID" : "0x19175", "ModName" : "Skyrim.esm"},	
 			"Region" : {"FormID" : "0x1676C", "ModName" : "Skyrim.esm"},
-			"Quest" : {"FormID" : "0x110007", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : {"FormID" : "0x872", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Bandit"	
 		},
 		{
@@ -390,7 +390,7 @@
 			"Difficulty" : "Adept",
 			"Location" : {"FormID" : "0x19284", "ModName" : "Skyrim.esm"},	
 			"Region" : {"FormID" : "0x1676C", "ModName" : "Skyrim.esm"},
-			"Quest" : {"FormID" : "0x110007", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : {"FormID" : "0x872", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Bandit"	
 		},
 		{
@@ -398,7 +398,7 @@
 			"Difficulty" : "Novice",
 			"Location" : {"FormID" : "0xD5665", "ModName" : "Skyrim.esm"},	
 			"Region" : {"FormID" : "0x1676C", "ModName" : "Skyrim.esm"},
-			"Quest" : {"FormID" : "0x110007", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : {"FormID" : "0x872", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Bandit"	
 		},
 		{
@@ -406,7 +406,7 @@
 			"Difficulty" : "Adept",
 			"Location" : {"FormID" : "0x192BD", "ModName" : "Skyrim.esm"},	
 			"Region" : {"FormID" : "0x1676C", "ModName" : "Skyrim.esm"},
-			"Quest" : {"FormID" : "0x110007", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : {"FormID" : "0x872", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Bandit"	
 		},
 		{
@@ -414,7 +414,7 @@
 			"Difficulty" : "Legendary",
 			"Location" : {"FormID" : "0x19168", "ModName" : "Skyrim.esm"},	
 			"Region" : {"FormID" : "0x1676C", "ModName" : "Skyrim.esm"},
-			"Quest" : {"FormID" : "0x110007", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : {"FormID" : "0x872", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Dragon"	
 		},
 		{
@@ -422,7 +422,7 @@
 			"Difficulty" : "Legendary",
 			"Location" : {"FormID" : "0x1916A", "ModName" : "Skyrim.esm"},	
 			"Region" : {"FormID" : "0x1676C", "ModName" : "Skyrim.esm"},
-			"Quest" : {"FormID" : "0x110007", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : {"FormID" : "0x872", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Dragon"	
 		},
 		{
@@ -430,7 +430,7 @@
 			"Difficulty" : "Legendary",
 			"Location" : {"FormID" : "0x19169", "ModName" : "Skyrim.esm"},	
 			"Region" : {"FormID" : "0x1676C", "ModName" : "Skyrim.esm"},
-			"Quest" : {"FormID" : "0x110007", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : {"FormID" : "0x872", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Dragon"	
 		},		
 		{
@@ -438,7 +438,7 @@
 			"Difficulty" : "Adept",
 			"Location" : {"FormID" : "0x19193", "ModName" : "Skyrim.esm"},		
 			"Region" : {"FormID" : "0x16772", "ModName" : "Skyrim.esm"},	
-			"Quest" : {"FormID" : "0x110008", "ModName" : "Bounty Quests Redone - NG.esp" },			
+			"Quest" : {"FormID" : "0x873", "ModName" : "Bounty Quests Redone - NG.esl" },			
 			"Type" : "Bandit"	
 		},		
 		{
@@ -446,7 +446,7 @@
 			"Difficulty" : "Apprentice",
 			"Location" : {"FormID" : "0x19295", "ModName" : "Skyrim.esm"},		
 			"Region" : {"FormID" : "0x16772", "ModName" : "Skyrim.esm"},	
-			"Quest" : {"FormID" : "0x110008", "ModName" : "Bounty Quests Redone - NG.esp" },			
+			"Quest" : {"FormID" : "0x873", "ModName" : "Bounty Quests Redone - NG.esl" },			
 			"Type" : "Bandit"	
 		},
 		{
@@ -454,7 +454,7 @@
 			"Difficulty" : "Adept",
 			"Location" : {"FormID" : "0x192A9", "ModName" : "Skyrim.esm"},	
 			"Region" : {"FormID" : "0x16772", "ModName" : "Skyrim.esm"},	
-			"Quest" : {"FormID" : "0x110008", "ModName" : "Bounty Quests Redone - NG.esp" },			
+			"Quest" : {"FormID" : "0x873", "ModName" : "Bounty Quests Redone - NG.esl" },			
 			"Type" : "Bandit"	
 		},
 		{
@@ -462,7 +462,7 @@
 			"Difficulty" : "Expert",
 			"Location" : {"FormID" : "0x18EE2", "ModName" : "Skyrim.esm"},	
 			"Region" : {"FormID" : "0x16772", "ModName" : "Skyrim.esm"},
-			"Quest" : {"FormID" : "0x110008", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : {"FormID" : "0x873", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Bandit"	
 		},		
 		{
@@ -470,7 +470,7 @@
 			"Difficulty" : "Apprentice",
 			"Location" : {"FormID" : "0x192C1", "ModName" : "Skyrim.esm"},	
 			"Region" : {"FormID" : "0x16772", "ModName" : "Skyrim.esm"},	
-			"Quest" : {"FormID" : "0x110008", "ModName" : "Bounty Quests Redone - NG.esp" },			
+			"Quest" : {"FormID" : "0x873", "ModName" : "Bounty Quests Redone - NG.esl" },			
 			"Type" : "Bandit"	
 		},		
 		{
@@ -478,7 +478,7 @@
 			"Difficulty" : "Expert",
 			"Location" : {"FormID" : "0x192C5", "ModName" : "Skyrim.esm"},	
 			"Region" : {"FormID" : "0x16772", "ModName" : "Skyrim.esm"},
-			"Quest" : {"FormID" : "0x110008", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : {"FormID" : "0x873", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Bandit"	
 		},
 		{
@@ -486,7 +486,7 @@
 			"Difficulty" : "Master",
 			"Location" : {"FormID" : "0x18EEB", "ModName" : "Skyrim.esm"},		
 			"Region" : {"FormID" : "0x16772", "ModName" : "Skyrim.esm"},	
-			"Quest" : {"FormID" : "0x110008", "ModName" : "Bounty Quests Redone - NG.esp" },			
+			"Quest" : {"FormID" : "0x873", "ModName" : "Bounty Quests Redone - NG.esl" },			
 			"Type" : "Giant"	
 		},		
 		{
@@ -494,7 +494,7 @@
 			"Difficulty" : "Master",
 			"Location" : {"FormID" : "0x1918E", "ModName" : "Skyrim.esm"},		
 			"Region" : {"FormID" : "0x16772", "ModName" : "Skyrim.esm"},	
-			"Quest" : {"FormID" : "0x110008", "ModName" : "Bounty Quests Redone - NG.esp" },			
+			"Quest" : {"FormID" : "0x873", "ModName" : "Bounty Quests Redone - NG.esl" },			
 			"Type" : "Giant"	
 		},				
 		{
@@ -502,7 +502,7 @@
 			"Difficulty" : "Master",
 			"Location" : {"FormID" : "0x1929A", "ModName" : "Skyrim.esm"},		
 			"Region" : {"FormID" : "0x16772", "ModName" : "Skyrim.esm"},	
-			"Quest" : {"FormID" : "0x110008", "ModName" : "Bounty Quests Redone - NG.esp" },			
+			"Quest" : {"FormID" : "0x873", "ModName" : "Bounty Quests Redone - NG.esl" },			
 			"Type" : "Giant"	
 		},
 		{
@@ -510,7 +510,7 @@
 			"Difficulty" : "Master",
 			"Location" : {"FormID" : "0x192AD", "ModName" : "Skyrim.esm"},		
 			"Region" : {"FormID" : "0x16772", "ModName" : "Skyrim.esm"},	
-			"Quest" : {"FormID" : "0x110008", "ModName" : "Bounty Quests Redone - NG.esp" },			
+			"Quest" : {"FormID" : "0x873", "ModName" : "Bounty Quests Redone - NG.esl" },			
 			"Type" : "Giant"	
 		},
 {
@@ -518,7 +518,7 @@
 			"Difficulty" : "Adept",
 			"Location" : {"FormID" : "0x1917F", "ModName" : "Skyrim.esm"},	
 			"Region" : {"FormID" : "0x1676B", "ModName" : "Skyrim.esm"},
-			"Quest" : {"FormID" : "0x110009", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : {"FormID" : "0x874", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Bandit"	
 		},
 		{
@@ -526,7 +526,7 @@
 			"Difficulty" : "Novice",
 			"Location" : {"FormID" : "0xC2EF8", "ModName" : "Skyrim.esm"},	
 			"Region" : {"FormID" : "0x1676B", "ModName" : "Skyrim.esm"},
-			"Quest" : {"FormID" : "0x110009", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : {"FormID" : "0x874", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Bandit"	
 		},
 		{
@@ -534,7 +534,7 @@
 			"Difficulty" : "Apprentice",
 			"Location" : {"FormID" : "0x192A3", "ModName" : "Skyrim.esm"},	
 			"Region" : {"FormID" : "0x1676B", "ModName" : "Skyrim.esm"},
-			"Quest" : {"FormID" : "0x110009", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : {"FormID" : "0x874", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Bandit"	
 		},
 		{
@@ -542,7 +542,7 @@
 			"Difficulty" : "Apprentice",
 			"Location" : {"FormID" : "0x192A4", "ModName" : "Skyrim.esm"},	
 			"Region" : {"FormID" : "0x1676B", "ModName" : "Skyrim.esm"},
-			"Quest" : {"FormID" : "0x110009", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : {"FormID" : "0x874", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Bandit"	
 		},
 		{
@@ -550,7 +550,7 @@
 			"Difficulty" : "Legendary",
 			"Location" : {"FormID" : "0x1927F", "ModName" : "Skyrim.esm"},	
 			"Region" : {"FormID" : "0x1676B", "ModName" : "Skyrim.esm"},
-			"Quest" : {"FormID" : "0x110009", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : {"FormID" : "0x874", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Dragon"	
 		}		
 	]	

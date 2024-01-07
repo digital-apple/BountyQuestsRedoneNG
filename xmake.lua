@@ -3,7 +3,7 @@ set_xmakever("2.7.8")
 
 -- set project
 set_project("Bounty Quests Redone - NG")
-set_version("1.0.4")
+set_version("1.0.5")
 set_license("MIT")
 set_languages("c++23")
 set_optimize("faster")
