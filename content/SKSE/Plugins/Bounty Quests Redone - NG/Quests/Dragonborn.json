@@ -4,89 +4,89 @@
 		{
 			"LocationName" : "Bloodskal Barrow",	
 			"Difficulty" : "Adept",
-			"Location" : {"FormID" : "0x3A07F", "ModName" : "Dragonborn.esm"},	
-			"Region" : {"FormID" : "0x16E2A", "ModName" : "Dragonborn.esm"},
-			"Quest" : {"FormID" : "0x875", "ModName" : "Bounty Quests Redone - NG.esl" },
+			"Location" : { "FormID" : "0x3A07F", "ModName" : "Dragonborn.esm" },	
+			"Region" : { "FormID" : "0x16E2A", "ModName" : "Dragonborn.esm" },
+			"Quest" : { "FormID" : "0x875", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Reaver"	
 		},
 		{
 			"LocationName" : "Brodir Grove",	
 			"Difficulty" : "Novice",
-			"Location" : {"FormID" : "0x1429C", "ModName" : "Dragonborn.esm"},	
-			"Region" : {"FormID" : "0x16E2A", "ModName" : "Dragonborn.esm"},
-			"Quest" : {"FormID" : "0x875", "ModName" : "Bounty Quests Redone - NG.esl" },
+			"Location" : { "FormID" : "0x1429C", "ModName" : "Dragonborn.esm" },	
+			"Region" : { "FormID" : "0x16E2A", "ModName" : "Dragonborn.esm" },
+			"Quest" : { "FormID" : "0x875", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Reaver"	
 		},
 		{
 			"LocationName" : "Haknir's Shoal",	
 			"Difficulty" : "Apprentice",
-			"Location" : {"FormID" : "0x142C2", "ModName" : "Dragonborn.esm"},	
-			"Region" : {"FormID" : "0x16E2A", "ModName" : "Dragonborn.esm"},
-			"Quest" : {"FormID" : "0x875", "ModName" : "Bounty Quests Redone - NG.esl" },
+			"Location" : { "FormID" : "0x142C2", "ModName" : "Dragonborn.esm" },	
+			"Region" : { "FormID" : "0x16E2A", "ModName" : "Dragonborn.esm" },
+			"Quest" : { "FormID" : "0x875", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Reaver"	
 		},
 		{
 			"LocationName" : "Wreck of the Strident Squall",	
 			"Difficulty" : "Apprentice",
-			"Location" : {"FormID" : "0x142C9", "ModName" : "Dragonborn.esm"},	
-			"Region" : {"FormID" : "0x16E2A", "ModName" : "Dragonborn.esm"},
-			"Quest" : {"FormID" : "0x875", "ModName" : "Bounty Quests Redone - NG.esl" },
+			"Location" : { "FormID" : "0x142C9", "ModName" : "Dragonborn.esm" },	
+			"Region" : { "FormID" : "0x16E2A", "ModName" : "Dragonborn.esm" },
+			"Quest" : { "FormID" : "0x875", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Reaver"	
 		},
 		{
 			"LocationName" : "Benkongerike",	
 			"Difficulty" : "Master",
-			"Location" : {"FormID" : "0x14298", "ModName" : "Dragonborn.esm"},	
-			"Region" : {"FormID" : "0x16E2A", "ModName" : "Dragonborn.esm"},
-			"Quest" : {"FormID" : "0x875", "ModName" : "Bounty Quests Redone - NG.esl" },
+			"Location" : { "FormID" : "0x14298", "ModName" : "Dragonborn.esm" },	
+			"Region" : { "FormID" : "0x16E2A", "ModName" : "Dragonborn.esm" },
+			"Quest" : { "FormID" : "0x875", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Riekling"	
 		},
 		{
 			"LocationName" : "Bristleback Cave",	
 			"Difficulty" : "Master",
-			"Location" : {"FormID" : "0x32892", "ModName" : "Dragonborn.esm"},	
-			"Region" : {"FormID" : "0x16E2A", "ModName" : "Dragonborn.esm"},
-			"Quest" : {"FormID" : "0x875", "ModName" : "Bounty Quests Redone - NG.esl" },
+			"Location" : { "FormID" : "0x32892", "ModName" : "Dragonborn.esm" },	
+			"Region" : { "FormID" : "0x16E2A", "ModName" : "Dragonborn.esm" },
+			"Quest" : { "FormID" : "0x875", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Riekling"	
 		},
 		{
 			"LocationName" : "Broken Tusk Mine",	
 			"Difficulty" : "Expert",
-			"Location" : {"FormID" : "0x142C1", "ModName" : "Dragonborn.esm"},	
-			"Region" : {"FormID" : "0x16E2A", "ModName" : "Dragonborn.esm"},
-			"Quest" : {"FormID" : "0x875", "ModName" : "Bounty Quests Redone - NG.esl" },
+			"Location" : { "FormID" : "0x142C1", "ModName" : "Dragonborn.esm" },	
+			"Region" : { "FormID" : "0x16E2A", "ModName" : "Dragonborn.esm" },
+			"Quest" : { "FormID" : "0x875", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Riekling"	
 		},
 		{
 			"LocationName" : "Frossel",	
 			"Difficulty" : "Master",
-			"Location" : {"FormID" : "0x142A6", "ModName" : "Dragonborn.esm"},	
-			"Region" : {"FormID" : "0x16E2A", "ModName" : "Dragonborn.esm"},
-			"Quest" : {"FormID" : "0x875", "ModName" : "Bounty Quests Redone - NG.esl" },
+			"Location" : { "FormID" : "0x142A6", "ModName" : "Dragonborn.esm" },	
+			"Region" : { "FormID" : "0x16E2A", "ModName" : "Dragonborn.esm" },
+			"Quest" : { "FormID" : "0x875", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Riekling"	
 		},
 		{
 			"LocationName" : "Glacial Cave",	
 			"Difficulty" : "Apprentice",
-			"Location" : {"FormID" : "0x142C4", "ModName" : "Dragonborn.esm"},	
-			"Region" : {"FormID" : "0x16E2A", "ModName" : "Dragonborn.esm"},
-			"Quest" : {"FormID" : "0x875", "ModName" : "Bounty Quests Redone - NG.esl" },
+			"Location" : { "FormID" : "0x142C4", "ModName" : "Dragonborn.esm" },	
+			"Region" : { "FormID" : "0x16E2A", "ModName" : "Dragonborn.esm" },
+			"Quest" : { "FormID" : "0x875", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Riekling"	
 		},
 		{
 			"LocationName" : "Moesring Pass",	
 			"Difficulty" : "Adept",
-			"Location" : {"FormID" : "0x142DA", "ModName" : "Dragonborn.esm"},	
-			"Region" : {"FormID" : "0x16E2A", "ModName" : "Dragonborn.esm"},
-			"Quest" : {"FormID" : "0x875", "ModName" : "Bounty Quests Redone - NG.esl" },
+			"Location" : { "FormID" : "0x142DA", "ModName" : "Dragonborn.esm" },	
+			"Region" : { "FormID" : "0x16E2A", "ModName" : "Dragonborn.esm" },
+			"Quest" : { "FormID" : "0x875", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Riekling"	
 		},
 		{
 			"LocationName" : "Saering's Watch",	
 			"Difficulty" : "Legendary",
-			"Location" : {"FormID" : "0x19D2B", "ModName" : "Dragonborn.esm"},	
-			"Region" : {"FormID" : "0x16E2A", "ModName" : "Dragonborn.esm"},
-			"Quest" : {"FormID" : "0x875", "ModName" : "Bounty Quests Redone - NG.esl" },
+			"Location" : { "FormID" : "0x19D2B", "ModName" : "Dragonborn.esm" },	
+			"Region" : { "FormID" : "0x16E2A", "ModName" : "Dragonborn.esm" },
+			"Quest" : { "FormID" : "0x875", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Dragon"	
 		}
 	]

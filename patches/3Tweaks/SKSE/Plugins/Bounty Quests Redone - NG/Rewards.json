@@ -5,19 +5,19 @@
 			"Name" : "Gold",
 			"FormID" : "0xF",
 			"ModName" : "Skyrim.esm",
-			"Quantity" : {"Novice" : "250", "Apprentice" : "350", "Adept" : "500", "Expert" : "700", "Master" : "1000", "Legendary" : "2500"}
+			"Quantity" : { "Novice" : "250", "Apprentice" : "350", "Adept" : "500", "Expert" : "700", "Master" : "1000", "Legendary" : "2500" }
 		},
 		{
 			"Name" : "Insight Potion (Regular)",
 			"FormID" : "0x15DE6B",
 			"ModName" : "3Tweaks.esp",
-			"Quantity" : {"Novice" : "1", "Apprentice" : "1", "Adept" : "1", "Expert" : "1", "Master" : "0", "Legendary" : "0"}
+			"Quantity" : { "Novice" : "1", "Apprentice" : "1", "Adept" : "1", "Expert" : "1", "Master" : "0", "Legendary" : "0" }
 		},
 		{
 			"Name" : "Insight Potion (Greater)",
 			"FormID" : "0x4860E",
 			"ModName" : "FTweaks.esp",
-			"Quantity" : {"Novice" : "0", "Apprentice" : "0", "Adept" : "0", "Expert" : "0", "Master" : "1", "Legendary" : "1"}
+			"Quantity" : { "Novice" : "0", "Apprentice" : "0", "Adept" : "0", "Expert" : "0", "Master" : "1", "Legendary" : "1" }
 		}
 	]	
 }

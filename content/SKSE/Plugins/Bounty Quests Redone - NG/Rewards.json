@@ -5,7 +5,7 @@
 			"Name" : "Gold",
 			"FormID" : "0xF",
 			"ModName" : "Skyrim.esm",
-			"Quantity" : {"Novice" : "100", "Apprentice" : "200", "Adept" : "300", "Expert" : "400", "Master" : "500", "Legendary" : "1000"}
+			"Quantity" : { "Novice" : "100", "Apprentice" : "200", "Adept" : "300", "Expert" : "400", "Master" : "500", "Legendary" : "1000" }
 		}
 	]	
 }

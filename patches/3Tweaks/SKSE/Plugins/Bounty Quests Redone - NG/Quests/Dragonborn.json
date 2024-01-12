@@ -6,7 +6,7 @@
 			"Difficulty" : "Master",
 			"Location" : { "FormID" : "0x3A07F", "ModName" : "Dragonborn.esm" },	
 			"Region" : { "FormID" : "0x16E2A", "ModName" : "Dragonborn.esm" },
-			"Quest" : { "FormID" : "0x110010", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : { "FormID" : "0x875", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Reaver"	
 		},
 		{
@@ -14,7 +14,7 @@
 			"Difficulty" : "Novice",
 			"Location" : { "FormID" : "0x1429C", "ModName" : "Dragonborn.esm" },	
 			"Region" : { "FormID" : "0x16E2A", "ModName" : "Dragonborn.esm" },
-			"Quest" : { "FormID" : "0x110010", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : { "FormID" : "0x875", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Reaver"	
 		},
 		{
@@ -22,7 +22,7 @@
 			"Difficulty" : "Apprentice",
 			"Location" : { "FormID" : "0x142C2", "ModName" : "Dragonborn.esm" },	
 			"Region" : { "FormID" : "0x16E2A", "ModName" : "Dragonborn.esm" },
-			"Quest" : { "FormID" : "0x110010", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : { "FormID" : "0x875", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Reaver"	
 		},
 		{
@@ -30,7 +30,7 @@
 			"Difficulty" : "Apprentice",
 			"Location" : { "FormID" : "0x142C9", "ModName" : "Dragonborn.esm" },	
 			"Region" : { "FormID" : "0x16E2A", "ModName" : "Dragonborn.esm" },
-			"Quest" : { "FormID" : "0x110010", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : { "FormID" : "0x875", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Reaver"	
 		},
 		{
@@ -38,7 +38,7 @@
 			"Difficulty" : "Master",
 			"Location" : { "FormID" : "0x14298", "ModName" : "Dragonborn.esm" },	
 			"Region" : { "FormID" : "0x16E2A", "ModName" : "Dragonborn.esm" },
-			"Quest" : { "FormID" : "0x110010", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : { "FormID" : "0x875", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Riekling"	
 		},
 		{
@@ -46,7 +46,7 @@
 			"Difficulty" : "Master",
 			"Location" : { "FormID" : "0x32892", "ModName" : "Dragonborn.esm" },	
 			"Region" : { "FormID" : "0x16E2A", "ModName" : "Dragonborn.esm" },
-			"Quest" : { "FormID" : "0x110010", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : { "FormID" : "0x875", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Riekling"	
 		},
 		{
@@ -54,7 +54,7 @@
 			"Difficulty" : "Expert",
 			"Location" : { "FormID" : "0x142C1", "ModName" : "Dragonborn.esm" },	
 			"Region" : { "FormID" : "0x16E2A", "ModName" : "Dragonborn.esm" },
-			"Quest" : { "FormID" : "0x110010", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : { "FormID" : "0x875", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Riekling"	
 		},
 		{
@@ -62,7 +62,7 @@
 			"Difficulty" : "Master",
 			"Location" : { "FormID" : "0x142A6", "ModName" : "Dragonborn.esm" },	
 			"Region" : { "FormID" : "0x16E2A", "ModName" : "Dragonborn.esm" },
-			"Quest" : { "FormID" : "0x110010", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : { "FormID" : "0x875", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Riekling"	
 		},
 		{
@@ -70,7 +70,7 @@
 			"Difficulty" : "Apprentice",
 			"Location" : { "FormID" : "0x142C4", "ModName" : "Dragonborn.esm" },	
 			"Region" : { "FormID" : "0x16E2A", "ModName" : "Dragonborn.esm" },
-			"Quest" : { "FormID" : "0x110010", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : { "FormID" : "0x875", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Riekling"	
 		},
 		{
@@ -78,7 +78,7 @@
 			"Difficulty" : "Adept",
 			"Location" : { "FormID" : "0x142DA", "ModName" : "Dragonborn.esm" },	
 			"Region" : { "FormID" : "0x16E2A", "ModName" : "Dragonborn.esm" },
-			"Quest" : { "FormID" : "0x110010", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : { "FormID" : "0x875", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Riekling"	
 		},
 		{
@@ -86,7 +86,7 @@
 			"Difficulty" : "Legendary",
 			"Location" : { "FormID" : "0x19D2B", "ModName" : "Dragonborn.esm" },	
 			"Region" : { "FormID" : "0x16E2A", "ModName" : "Dragonborn.esm" },
-			"Quest" : { "FormID" : "0x110010", "ModName" : "Bounty Quests Redone - NG.esp" },
+			"Quest" : { "FormID" : "0x875", "ModName" : "Bounty Quests Redone - NG.esl" },
 			"Type" : "Dragon"	
 		}
 	]
