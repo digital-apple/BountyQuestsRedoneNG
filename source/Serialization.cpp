@@ -3,7 +3,7 @@
 
 void Serialization::AddTracker(RE::TESGlobal* a_global, RE::BGSLocation* a_region)
 {
-    logs::info("Serialization::AddTracker :: Parsing tracker: '{}' with global variable: '{:x}'", a_region->GetName(), a_global->GetFormID());
+    logs::info("Serialization::AddTracker :: Parsing tracker: '{}' with global variable: '0x{:x}'", a_region->GetName(), a_global->GetFormID());
 
     Tracker instance{a_global, a_region};
     trackers.push_back(std::make_shared<Tracker>(instance));
@@ -18,7 +18,7 @@ void Serialization::ClearTracker(RE::BGSLocation* a_region)
         if (tracker->region == a_region) {
             logs::info("Serialization::ClearTracker :: Tracker found!");
             tracker->global->value = 0U;
-            logs::info("Serialization::ClearTracker :: Tried to clear global variable: '{:x}'. Result value: '{}'", tracker->global->GetFormID(), tracker->global->value);
+            logs::info("Serialization::ClearTracker :: Tried to clear global variable: '0x{:x}'. Result value: '{}'", tracker->global->GetFormID(), tracker->global->value);
             tracker->reward.clear();
             logs::info("Serialization::ClearTracker :: Tried to clear reward counter. Result value: '{}'", tracker->reward.size());
             break;
@@ -112,7 +112,7 @@ void Serialization::SetTracker(RE::BGSLocation* a_region, Util::DIFFICULTY a_dif
         if (tracker->region == a_region) {
             logs::info("Serialization::SetTracker :: Tracker found!");
             tracker->global->value = 1U;
-            logs::info("Serialization::SetTracker :: Tried to set global variable: '{:x}'. Result value: '{}'", tracker->global->GetFormID(), tracker->global->value);
+            logs::info("Serialization::SetTracker :: Tried to set global variable: '0x{:x}'. Result value: '{}'", tracker->global->GetFormID(), tracker->global->value);
             tracker->reward[a_difficulty] += a_amount;
             logs::info("Serialization::SetTracker :: Tried to set reward counter for difficulty: '{}' with an increase of: '{}'. Result value: '{}'", static_cast<std::uint32_t>(a_difficulty), a_amount, tracker->reward[a_difficulty]);
             break;
@@ -126,12 +126,12 @@ bool Serialization::UpdateTracker(RE::TESGlobal* a_global, RE::BGSLocation* a_re
         for (auto& tracker : trackers) {
             if (tracker->global == a_global && tracker->region == a_region) {
                 tracker->reward = a_reward;
-                logs::info("Serialization::UpdateTracker :: Updated tracker '{:x}' for region '{}'", a_global->GetFormID(), a_region->GetName());
+                logs::info("Serialization::UpdateTracker :: Updated tracker '0x{:x}' for region '{}'", a_global->GetFormID(), a_region->GetName());
                 return true;
             }
         }
     }
-    logs::error("Serialization::UpdateTracker :: Failed to find tracker '{:x}' for region '{}'", a_global->GetFormID(), a_region->GetName());
+    logs::error("Serialization::UpdateTracker :: Failed to find tracker '0x{:x}' for region '{}'", a_global->GetFormID(), a_region->GetName());
     return false;
 }
 
@@ -165,12 +165,12 @@ bool Serialization::SaveObjectives(SKSE::SerializationInterface* a_interface)
         const auto text = objective->text.data();
 
         if (!a_interface->WriteRecordData(&quest, sizeof(quest))) {
-            logs::error("Serialization::SaveObjectives :: Failed to write record data with the quest formID! '{:x}'", quest);
+            logs::error("Serialization::SaveObjectives :: Failed to write record data with the quest formID! '0x{:x}'", quest);
             return false;
         }
 
         if (!a_interface->WriteRecordData(&location, sizeof(location))) {
-            logs::error("Serialization::SaveObjectives :: Failed to write record data with the location formID! '{:x}'", location);
+            logs::error("Serialization::SaveObjectives :: Failed to write record data with the location formID! '0x{:x}'", location);
             return false;
         }
 
@@ -208,7 +208,7 @@ bool Serialization::SaveLocations(SKSE::SerializationInterface* a_interface)
     for (auto& location : locations) {
         const auto formID = location->GetFormID();
         if (!a_interface->WriteRecordData(&formID, sizeof(formID))) {
-            logs::error("Serialization::SaveLocations :: Failed to write record data with the reserved location formID! '{:x}'", formID);
+            logs::error("Serialization::SaveLocations :: Failed to write record data with the reserved location formID! '0x{:x}'", formID);
             return false;
         }
     }
@@ -238,12 +238,12 @@ bool Serialization::SaveTrackers(SKSE::SerializationInterface* a_interface)
         const auto region = tracker->region->GetFormID();
         
         if (!a_interface->WriteRecordData(&global, sizeof(global))) {
-            logs::error("Serialization::SaveTrackers :: Failed to write record data with the global variable formID! '{:x}'", global);
+            logs::error("Serialization::SaveTrackers :: Failed to write record data with the global variable formID! '0x{:x}'", global);
             return false;
         }
 
         if (!a_interface->WriteRecordData(&region, sizeof(region))) {
-            logs::error("Serialization::SaveTrackers :: Failed to write record data with the region formID! '{:x}'", region);
+            logs::error("Serialization::SaveTrackers :: Failed to write record data with the region formID! '0x{:x}'", region);
             return false;
         }
 
@@ -295,12 +295,12 @@ bool Serialization::LoadObjectives(SKSE::SerializationInterface* a_interface)
         RE::FormID newLocation;
 
         if (!a_interface->ResolveFormID(oldQuest, newQuest)) {
-            logs::error("Serialization::LoadObjectives :: Failed to resolve the quest formID! '{:x}' -> '{:x}'", oldQuest, newQuest);
+            logs::error("Serialization::LoadObjectives :: Failed to resolve the quest formID! '0x{:x}' -> '0x{:x}'", oldQuest, newQuest);
             continue;
         }
 
         if (!a_interface->ResolveFormID(oldLocation, newLocation)) {
-            logs::error("Serialization::LoadObjectives :: Failed to resolve the location formID! '{:x}' -> '{:x}'", oldLocation, newLocation);
+            logs::error("Serialization::LoadObjectives :: Failed to resolve the location formID! '0x{:x}' -> '0x{:x}'", oldLocation, newLocation);
             continue;
         }
 
@@ -330,7 +330,7 @@ bool Serialization::LoadLocations(SKSE::SerializationInterface* a_interface)
         RE::FormID newLocation;
 
         if (!a_interface->ResolveFormID(oldLocation, newLocation)) {
-            logs::error("Serialization::LoadLocations :: Failed to resolve the location formID! '{:x}' -> '{:x}'", oldLocation, newLocation);
+            logs::error("Serialization::LoadLocations :: Failed to resolve the location formID! '0x{:x}' -> '0x{:x}'", oldLocation, newLocation);
             continue;
         }
 
@@ -377,12 +377,12 @@ bool Serialization::LoadTrackers(SKSE::SerializationInterface* a_interface)
         RE::FormID newRegion;
 
         if (!a_interface->ResolveFormID(oldGlobal, newGlobal)) {
-            logs::error("Serialization::LoadTrackers :: Failed to resolve the global variable formID! '{:x}' -> '{:x}'", oldGlobal, newGlobal);
+            logs::error("Serialization::LoadTrackers :: Failed to resolve the global variable formID! '0x{:x}' -> '0x{:x}'", oldGlobal, newGlobal);
             continue;
         }
 
         if (!a_interface->ResolveFormID(oldRegion, newRegion)) {
-            logs::error("Serialization::LoadTrackers :: Failed to resolve the region formID! '{:x}' -> '{:x}'", oldRegion, newRegion);
+            logs::error("Serialization::LoadTrackers :: Failed to resolve the region formID! '0x{:x}' -> '0x{:x}'", oldRegion, newRegion);
             continue;
         }
 

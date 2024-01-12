@@ -1,9 +1,11 @@
 #include "System.h"
+#include "RE/B/BGSLocAlias.h"
 #include "Serialization.h"
 #include "Offsets.h"
 
 void System::AddToQueue(std::shared_ptr<Quest> a_quest)
 {
+    logs::info("System::AddToQueue :: Adding quest: '{}' to the queue.", a_quest->location->GetName());
     queue.push_back(a_quest);
 }
 
@@ -32,12 +34,12 @@ void System::CompleteObjective(RE::BGSLocation* a_region, std::uint16_t a_index)
     }
 }
 
-auto System::GetAliasReference(RE::TESQuest* a_quest) -> RE::Actor*
+auto System::GetAliasReference(RE::TESQuest* a_quest, std::uint32_t a_index) -> RE::BGSBaseAlias*
 {
     if (a_quest) {
-        for (auto& dummyAlias : a_quest->aliases) {
-            if (dummyAlias->aliasID == 1) {
-                return static_cast<RE::BGSRefAlias*>(dummyAlias)->GetActorReference();
+        for (const auto& alias : a_quest->aliases) {
+            if (alias && alias->aliasID == a_index) {
+                return static_cast<RE::BGSRefAlias*>(alias);
             }
         }
     }
@@ -85,19 +87,13 @@ void System::ParseQuests()
                 if (location && region && owner) {
                     auto note = CreateNote(name, quest["Difficulty"].as<std::string>());
                     quests.push_back(std::make_shared<Quest>(name, difficulty, location, region, owner, type, note));
-                    logs::info("System::ParseQuests :: Successfully parsed quest: '{}'", name);
+                    logs::info("System::ParseQuests :: Successfully parsed quest: '{}' with type: '{}' and difficulty: '{}' from: '{}'", name, quest["Type"].as<std::string>(), quest["Difficulty"].as<std::string>(), quest["Quest"]["ModName"].as<std::string>());
                 } else {
                     logs::warn("System::ParseQuests :: Failed to parse quest: '{}'", name);
                 }
             }
         }
     }
-}
-
-void System::ParseQueue()
-{
-    std::jthread thread(&System::StartQuests, this);
-    thread.detach();
 }
 
 void System::ParseRewards()
@@ -159,7 +155,7 @@ void System::ParseTrackers()
         if (global && region) {
             Serialization::GetSingleton()->AddTracker(global, region);
         } else {
-            logs::warn("System::ParseTrackers :: Failed to parse tracker: '{:x}'.", tracker["GlobalVariable"]["FormID"].as<RE::FormID>());
+            logs::warn("System::ParseTrackers :: Failed to parse tracker: '0x{:x}'.", tracker["GlobalVariable"]["FormID"].as<RE::FormID>());
         }
     }
 }
@@ -219,7 +215,7 @@ void System::RewardPlayer(RE::BGSLocation* a_region)
                     }
                 }
             } else {
-                logs::warn("System::RewardPlayer :: Invalid form: '{:x}' | '{}'", reward.formID, reward.modName);
+                logs::warn("System::RewardPlayer :: Invalid form: '0x{:x}' | '{}'", reward.formID, reward.modName);
             }
         }
         data->ClearTracker(a_region);
@@ -252,16 +248,20 @@ void System::StartEveryQuest(RE::BGSLocation* a_region, Util::TYPE a_type)
             }
         }
     }
-    ParseQueue();
+
+    std::jthread thread(&System::StartQuests);
+    thread.detach();
 }
 
 void System::StartQuests()
 {
     const auto BQRNG_AliasGenerator = RE::TESDataHandler::GetSingleton()->LookupForm<RE::TESQuest>(Offsets::Forms::BQRNG_AliasGenerator, "Bounty Quests Redone - NG.esl");
 
-    logs::info("System::StartQuests :: Parsing '{}' quests.", queue.size());
+    auto system = GetSingleton();
 
-    for (auto& quest : queue) {
+    logs::info("System::StartQuests :: Parsing '{}' quests.", system->queue.size());
+
+    for (auto& quest : system->queue) {
         if (quest->location && quest->region && quest->quest) {
             if (quest->quest && !quest->quest->IsRunning()) {
                 quest->quest->Start();
@@ -270,22 +270,26 @@ void System::StartQuests()
             for (const auto& alias : quest->quest->aliases) {
                 const auto referenceAlias = reinterpret_cast<RE::BGSRefAlias*>(alias);
 
-                if (!referenceAlias->GetActorReference() || referenceAlias->GetActorReference() && referenceAlias->GetActorReference()->IsDead()) {
+                if (!referenceAlias->GetActorReference() || (referenceAlias->GetActorReference() && referenceAlias->GetActorReference()->IsDead())) {
                     RE::Actor* reference = nullptr;
-                    auto counter = 0;
+                    std::size_t counter = 0;
                 
-                    while (!reference && counter < 10) {
-                        UpdateLocationAlias(BQRNG_AliasGenerator, quest->location);    
+                    while (!reference && counter < 5) {
+
+                        system->UpdateLocationAlias(BQRNG_AliasGenerator, quest->location);
+
                         std::this_thread::sleep_for(std::chrono::milliseconds(250));
-                        reference = GetAliasReference(BQRNG_AliasGenerator);
+
+                        reference = static_cast<RE::BGSRefAlias*>(system->GetAliasReference(BQRNG_AliasGenerator, 1U))->GetActorReference();
                         counter++;
+                        
                     }
 
                     if (reference && !reference->IsDisabled() && !reference->IsDead()) {
                         Serialization::GetSingleton()->ReserveLocation(quest->location, true);
                         ForceRefTo(quest->quest, referenceAlias->aliasID, reference);
                         RE::TESObjectREFR* worldMarker = quest->location->worldLocMarker.get().get();
-                        RE::TESObjectREFR* markerRef = worldMarker ? worldMarker : GetMapMarker(quest->location);
+                        RE::TESObjectREFR* markerRef = worldMarker ? worldMarker : system->GetMapMarker(quest->location);
 
                         if (markerRef) {
                             RE::ExtraMapMarker* mapMarker = markerRef ? markerRef->extraList.GetByType<RE::ExtraMapMarker>() : nullptr;
@@ -322,7 +326,7 @@ void System::StartQuests()
         } else {
             logs::warn("System::StartQuests :: Quest: '{}' couldn't be started due to missing or invalid data.", quest->name);
         }
-        queue.clear();
+        system->queue.clear();
     }
 }
 
@@ -343,7 +347,9 @@ void System::StartRandomQuest(RE::BGSLocation* a_region, Util::TYPE a_type)
     const auto random = std::rand() % temporary.size();
 
     AddToQueue(temporary[random]);
-    ParseQueue();
+
+    std::jthread thread(&System::StartQuests);
+    thread.detach();
 }
 
 void System::UpdateGlobals()
@@ -409,17 +415,30 @@ void System::UpdateLocationAlias(RE::TESQuest* a_quest, RE::BGSLocation* a_locat
     if (a_quest && a_location) {
         for (auto& alias : a_quest->aliases) {
             if (alias->aliasID == 0) {
+                auto locationAlias = static_cast<RE::BGSLocAlias*>(alias);
+
                 a_quest->Stop();
-                auto location = static_cast<RE::BGSLocAlias*>(alias);
-                location->unk28 = reinterpret_cast<std::uint64_t>(a_location);
-                bool result;
-                a_quest->EnsureQuestStarted(result, false);
-                break;
+
+                logs::info("System::UpdateLocationAlias :: Stopped quest: '{}' | '0x{:x}'", a_quest->GetName(), a_quest->GetFormID());
+                
+                if (locationAlias) {
+                    std::size_t counter = 5;
+                    while ((a_quest->IsStopped() || !locationAlias->unk28) && counter > 0) {
+                        logs::info("System::UpdateLocationAlias :: Attempting to set alias: '{}' on: '{}' | '0x{:x} with location: '{}' | '0x{:x}' Tries left: '{}'", alias->aliasID, a_quest->GetName(), a_quest->GetFormID(), a_location->GetName(), a_location->GetFormID(), counter);
+                        a_quest->Stop();
+                        locationAlias->unk28 = reinterpret_cast<std::uint64_t>(a_location);
+                        bool result;
+                        a_quest->EnsureQuestStarted(result, false);
+                        counter--;
+                        std::this_thread::sleep_for(std::chrono::milliseconds(250));
+                    }
+                }
             }
         }
+    } else {
+        logs::info("System::UpdateLocationAlias :: Invalid quest or location!");
     }
 }
-
 void System::UpdateReward(RE::TESQuest* a_quest, std::uint16_t a_index)
 {
     for (auto& quest : quests) {

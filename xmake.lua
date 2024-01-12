@@ -20,7 +20,7 @@ set_defaultmode("releasedbg")
 -- add rules
 add_rules("mode.debug", "mode.releasedbg")
 add_rules("plugin.vsxmake.autoupdate")
-add_rules("plugin.compile_commands.autoupdate", {outputdir = ".vscode"})
+add_rules("plugin.compile_commands.autoupdate", {outputdir = ".vscode", lsp = "clangd"})
 
 -- set policies
 set_policy("package.requires_lock", true)
@@ -41,7 +41,7 @@ target("Bounty Quests Redone - NG")
 
     -- add src files
     add_files("source/**.cpp")
-    add_headerfiles("include/**.h", "include/**.hpp")
+    add_headerfiles("include/**.h")
     add_includedirs("include", "source")
     set_pcxxheader("include/PCH.h")
 

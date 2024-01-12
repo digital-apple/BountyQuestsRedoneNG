@@ -34,7 +34,8 @@ EventResult Events::ProcessEvent(const RE::MenuOpenCloseEvent* a_event, RE::BSTE
     }
 
     if (a_event->menuName == RE::GiftMenu::MENU_NAME && !a_event->opening) {
-        System::GetSingleton()->ParseQueue();
+        std::jthread thread(&System::StartQuests);
+        thread.detach();
     }
 
     if (a_event->menuName == RE::DialogueMenu::MENU_NAME && a_event->opening) {
@@ -52,19 +53,20 @@ EventResult Events::ProcessEvent(const RE::TESActorLocationChangeEvent* a_event,
 
     if (auto actor = a_event->actor.get(); actor) {
         if (actor == RE::PlayerCharacter::GetSingleton()) {
-
             if (auto newLocation = a_event->newLoc; newLocation) {
-                logs::info("Events::TESActorLocationChangeEvent :: Passing location: '{}'", newLocation->GetName());
+                logs::info("Events::TESActorLocationChangeEvent :: Passing location: '{}' | '0x{:x}'", newLocation->GetName(), newLocation->GetFormID());
                 auto trackers = Serialization::GetSingleton()->GetTrackers();
 
                 for (auto& tracker : trackers) {
                     auto currentLocation = newLocation;
-                    logs::info("Events::TESActorLocationChangeEvent :: Current Tracker: '{:x}' | '{}' | '{:x}'", tracker->global->GetFormID(), tracker->region->GetName(), tracker->region->GetFormID());
                     while (currentLocation) {
                         if (tracker->region == currentLocation) {
-                            logs::info("Events::TESActorLocationChangeEvent :: Found parent region: '{}' | '{:x}'", currentLocation->GetName(), currentLocation->GetFormID());
+                            logs::info("Events::TESActorLocationChangeEvent :: Found parent region: '{}' | '0x{:x}'", currentLocation->GetName(), currentLocation->GetFormID());
                             const auto BQRNG_Catalogue = Util::GetSingleton()->GetQuest(Offsets::Forms::BQRNG_Catalogue, "Bounty Quests Redone - NG.esl");
-                            System::GetSingleton()->UpdateLocationAlias(BQRNG_Catalogue, currentLocation);
+
+                            std::jthread thread(&System::UpdateLocationAlias, BQRNG_Catalogue, currentLocation);
+                            thread.detach();
+                            
                             break;
                         }
                         currentLocation = currentLocation->parentLoc;

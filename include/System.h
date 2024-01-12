@@ -34,11 +34,10 @@ public:
     void AddToQueue(std::shared_ptr<Quest> a_quest);
     auto CreateNote(std::string a_name, std::string a_difficulty) -> RE::TESObjectBOOK*;
     void CompleteObjective(RE::BGSLocation* a_region, std::uint16_t a_index);
-    auto GetAliasReference(RE::TESQuest* a_quest) -> RE::Actor*;
+    auto GetAliasReference(RE::TESQuest* a_quest, std::uint32_t a_index) -> RE::BGSBaseAlias*;
     auto GetMapMarker(RE::BGSLocation* a_location) -> RE::TESObjectREFR*;
     auto GetQuests() const -> const std::vector<std::shared_ptr<Quest>>&;
     void ParseQuests();
-    void ParseQueue();
     void ParseRewards();
     void ParseTrackers();
     void ParseTexts();
@@ -46,10 +45,10 @@ public:
     void RewardPlayer(RE::BGSLocation* a_region);
     void ShowGiftMenu(RE::TESObjectREFR* a_target, RE::TESObjectREFR* a_source);
     void StartEveryQuest(RE::BGSLocation* a_region, Util::TYPE a_type);
-    void StartQuests();
+    static void StartQuests();
     void StartRandomQuest(RE::BGSLocation* a_region, Util::TYPE a_type);
     void UpdateGlobals();
-    void UpdateLocationAlias(RE::TESQuest* a_quest, RE::BGSLocation* a_location);
+    static void UpdateLocationAlias(RE::TESQuest* a_quest, RE::BGSLocation* a_location);
     void UpdateReward(RE::TESQuest* a_quest, std::uint16_t a_index);
 
     static void ForceLocationTo(RE::TESQuest* a_quest, std::uint32_t a_aliasID, RE::BGSLocation* a_location);
