@@ -10,4 +10,4 @@ vs*/
 
 # files
 *.zip
-TODO.txt
+compile_commands.json
