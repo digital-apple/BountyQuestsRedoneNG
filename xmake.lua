@@ -1,51 +1,38 @@
--- set minimum xmake version
-set_xmakever("2.7.8")
+set_xmakever("2.8.2")
 
--- set project
+includes("libraries/commonlibsse-ng")
+
 set_project("Bounty Quests Redone - NG")
-set_version("1.0.5")
+set_version("1.0.6")
 set_license("MIT")
+
 set_languages("c++23")
-set_optimize("faster")
-set_warnings("allextra", "error")
+set_warnings("allextra")
 
--- set allowed
-set_allowedarchs("windows|x64")
-set_allowedmodes("debug", "releasedbg")
-
--- set defaults
-set_defaultarchs("windows|x64")
-set_defaultmode("releasedbg")
-
--- add rules
-add_rules("mode.debug", "mode.releasedbg")
-add_rules("plugin.vsxmake.autoupdate")
-add_rules("plugin.compile_commands.autoupdate", {outputdir = ".vscode", lsp = "clangd"})
-
--- set policies
 set_policy("package.requires_lock", true)
 
--- require packages
-add_requires("commonlibsse-ng", { configs = { skyrim_vr = false } }, "jsoncons")
+add_rules("mode.debug", "mode.releasedbg")
+add_rules("plugin.vsxmake.autoupdate")
 
--- targets
+set_config("skyrim_vr", false)
+
+add_requires("jsoncons")
+
 target("Bounty Quests Redone - NG")
-    -- add packages to target
-    add_packages("fmt", "spdlog 1.12.0", { configs = { fmt_external = true } }, "commonlibsse-ng", "jsoncons")
+	add_deps("commonlibsse-ng")
+	
+    add_packages("jsoncons")
 
-    -- add commonlibsse-ng plugin
-    add_rules("@commonlibsse-ng/plugin", {
+	add_rules("commonlibsse-ng.plugin", {
         name = "Bounty Quests Redone - NG",
         author = "digital-apple"
     })
 
-    -- add src files
     add_files("source/**.cpp")
     add_headerfiles("include/**.h")
-    add_includedirs("include", "source")
+    add_includedirs("include", { public = true })
     set_pcxxheader("include/PCH.h")
 
-    -- copy build files to MODS or SKYRIM paths (remove if not needed)
     after_build(function(target)
         local copy = function(env, ext)
             for _, env in pairs(env:split(";")) do
@@ -57,9 +44,9 @@ target("Bounty Quests Redone - NG")
                 end
             end
         end
-        if os.getenv("SKYRIM_MODS_PATH") then
-            copy(os.getenv("SKYRIM_MODS_PATH"), target:name())
-        elseif os.getenv("SKYRIM_PATH") then
-            copy(os.getenv("SKYRIM_PATH"), "Data")
+        if os.getenv("XSE_TES5_MODS_PATH") then
+            copy(os.getenv("XSE_TES5_MODS_PATH"), target:name())
+        elseif os.getenv("XSE_TES5_GAME_PATH") then
+            copy(os.getenv("XSE_TES5_GAME_PATH"), "Data")
         end
     end)
