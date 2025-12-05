@@ -3,9 +3,11 @@
 #include "Serialization.h"
 #include "Offsets.h"
 
+#undef PlaySound
+
 void System::AddToQueue(std::shared_ptr<Quest> a_quest)
 {
-    logs::info("System::AddToQueue :: Adding quest: '{}' to the queue.", a_quest->location->GetName());
+    INFO("System::AddToQueue :: Adding quest: '{}' to the queue.", a_quest->location->GetName());
     queue.push_back(a_quest);
 }
 
@@ -71,8 +73,8 @@ void System::ParseQuests()
         if (entry.path().extension() == ".json") {
             std::ifstream path(std::filesystem::absolute(entry.path()));
 
-            json config = json::parse(path);
-            const json& questArray = config["Quests"];
+            jsoncons::json config = jsoncons::json::parse(path);
+            const jsoncons::json& questArray = config["Quests"];
 
             const auto util = Util::GetSingleton();
 
@@ -87,9 +89,9 @@ void System::ParseQuests()
                 if (location && region && owner) {
                     auto note = CreateNote(name, quest["Difficulty"].as<std::string>());
                     quests.push_back(std::make_shared<Quest>(name, difficulty, location, region, owner, type, note));
-                    logs::info("System::ParseQuests :: Successfully parsed quest: '{}' with type: '{}' and difficulty: '{}' from: '{}'", name, quest["Type"].as<std::string>(), quest["Difficulty"].as<std::string>(), quest["Quest"]["ModName"].as<std::string>());
+                    INFO("System::ParseQuests :: Successfully parsed quest: '{}' with type: '{}' and difficulty: '{}' from: '{}'", name, quest["Type"].as<std::string>(), quest["Difficulty"].as<std::string>(), quest["Quest"]["ModName"].as<std::string>());
                 } else {
-                    logs::warn("System::ParseQuests :: Failed to parse quest: '{}'", name);
+                    WARN("System::ParseQuests :: Failed to parse quest: '{}'", name);
                 }
             }
         }
@@ -99,8 +101,8 @@ void System::ParseQuests()
 void System::ParseRewards()
 {
     std::ifstream path("Data/SKSE/Plugins/Bounty Quests Redone - NG/Rewards.json");
-    json config = json::parse(path);
-    const json& rewardArray = config["Rewards"];
+    jsoncons::json config = jsoncons::json::parse(path);
+    const jsoncons::json& rewardArray = config["Rewards"];
 
     for (const auto& reward : rewardArray.array_range()) {
 
@@ -126,8 +128,8 @@ void System::ParseTexts()
     const auto util = Util::GetSingleton();
 
     std::ifstream path("Data/SKSE/Plugins/Bounty Quests Redone - NG/Texts.json");
-    json config = json::parse(path);
-    const json& textArray = config["Texts"];
+    jsoncons::json config = jsoncons::json::parse(path);
+    const jsoncons::json& textArray = config["Texts"];
 
     for (const auto& text : textArray.array_range()) {
         util->SetText(Util::TEXT::Objective, text["Objective"].as<std::string>());
@@ -143,8 +145,8 @@ void System::ParseTexts()
 void System::ParseTrackers()
 {
     std::ifstream path("Data/SKSE/Plugins/Bounty Quests Redone - NG/Trackers.json");
-    json config = json::parse(path);
-    const json& trackerArray = config["Trackers"];
+    jsoncons::json config = jsoncons::json::parse(path);
+    const jsoncons::json& trackerArray = config["Trackers"];
 
     const auto dataHandler = RE::TESDataHandler::GetSingleton();
 
@@ -155,7 +157,7 @@ void System::ParseTrackers()
         if (global && region) {
             Serialization::GetSingleton()->AddTracker(global, region);
         } else {
-            logs::warn("System::ParseTrackers :: Failed to parse tracker: '0x{:x}'.", tracker["GlobalVariable"]["FormID"].as<RE::FormID>());
+            WARN("System::ParseTrackers :: Failed to parse tracker: '0x{:x}'.", tracker["GlobalVariable"]["FormID"].as<RE::FormID>());
         }
     }
 }
@@ -208,14 +210,14 @@ void System::RewardPlayer(RE::BGSLocation* a_region)
                         CompleteObjective(a_region, 0);
                         
                         if (sAddItemtoInventory) {
-                            std::string result = fmt::format("{} {}, {}", sAddItemtoInventory->GetString(), form->GetName(), quantity);
+                            std::string result = std::format("{} {}, {}", sAddItemtoInventory->GetString(), form->GetName(), quantity);
                             RE::PlaySound("ITMGoldUpSD");
                             RE::DebugNotification(result.c_str(), nullptr, true);
                         }
                     }
                 }
             } else {
-                logs::warn("System::RewardPlayer :: Invalid form: '0x{:x}' | '{}'", reward.formID, reward.modName);
+                WARN("System::RewardPlayer :: Invalid form: '0x{:x}' | '{}'", reward.formID, reward.modName);
             }
         }
         data->ClearTracker(a_region);
@@ -239,7 +241,7 @@ void System::ShowGiftMenu(RE::TESObjectREFR* a_target, RE::TESObjectREFR* a_sour
 
 void System::StartEveryQuest(RE::BGSLocation* a_region, Util::TYPE a_type)
 {
-    logs::info("System::StartEveryQuest :: Starting every available quest from: '{}' with type: '{}'", a_region->GetName(), static_cast<std::uint32_t>(a_type));
+    INFO("System::StartEveryQuest :: Starting every available quest from: '{}' with type: '{}'", a_region->GetName(), static_cast<std::uint32_t>(a_type));
 
     for (const auto& quest : quests) {
         if (quest->region == a_region && !Serialization::GetSingleton()->IsLocationReserved(quest->location)) {
@@ -259,7 +261,7 @@ void System::StartQuests()
 
     auto system = GetSingleton();
 
-    logs::info("System::StartQuests :: Parsing '{}' quests.", system->queue.size());
+    INFO("System::StartQuests :: Parsing '{}' quests.", system->queue.size());
 
     for (auto& quest : system->queue) {
         if (quest->location && quest->region && quest->quest) {
@@ -324,7 +326,7 @@ void System::StartQuests()
                 }
             }
         } else {
-            logs::warn("System::StartQuests :: Quest: '{}' couldn't be started due to missing or invalid data.", quest->name);
+            WARN("System::StartQuests :: Quest: '{}' couldn't be started due to missing or invalid data.", quest->name);
         }
         system->queue.clear();
     }
@@ -332,7 +334,7 @@ void System::StartQuests()
 
 void System::StartRandomQuest(RE::BGSLocation* a_region, Util::TYPE a_type)
 {
-    logs::info("System::StartRandomQuest :: Starting random quest from: '{}' with type: '{}'", a_region->GetName(), static_cast<std::uint32_t>(a_type));
+    INFO("System::StartRandomQuest :: Starting random quest from: '{}' with type: '{}'", a_region->GetName(), static_cast<std::uint32_t>(a_type));
 
     std::vector<std::shared_ptr<Quest>> temporary;
 
@@ -419,12 +421,12 @@ void System::UpdateLocationAlias(RE::TESQuest* a_quest, RE::BGSLocation* a_locat
 
                 a_quest->Stop();
 
-                logs::info("System::UpdateLocationAlias :: Stopped quest: '{}' | '0x{:x}'", a_quest->GetName(), a_quest->GetFormID());
+                INFO("System::UpdateLocationAlias :: Stopped quest: '{}' | '0x{:x}'", a_quest->GetName(), a_quest->GetFormID());
                 
                 if (locationAlias) {
                     std::size_t counter = 5;
                     while ((a_quest->IsStopped() || !locationAlias->unk28) && counter > 0) {
-                        logs::info("System::UpdateLocationAlias :: Attempting to set alias: '{}' on: '{}' | '0x{:x} with location: '{}' | '0x{:x}' Tries left: '{}'", alias->aliasID, a_quest->GetName(), a_quest->GetFormID(), a_location->GetName(), a_location->GetFormID(), counter);
+                        INFO("System::UpdateLocationAlias :: Attempting to set alias: '{}' on: '{}' | '0x{:x} with location: '{}' | '0x{:x}' Tries left: '{}'", alias->aliasID, a_quest->GetName(), a_quest->GetFormID(), a_location->GetName(), a_location->GetFormID(), counter);
                         a_quest->Stop();
                         locationAlias->unk28 = reinterpret_cast<std::uint64_t>(a_location);
                         bool result;
@@ -436,7 +438,7 @@ void System::UpdateLocationAlias(RE::TESQuest* a_quest, RE::BGSLocation* a_locat
             }
         }
     } else {
-        logs::info("System::UpdateLocationAlias :: Invalid quest or location!");
+        INFO("System::UpdateLocationAlias :: Invalid quest or location!");
     }
 }
 void System::UpdateReward(RE::TESQuest* a_quest, std::uint16_t a_index)

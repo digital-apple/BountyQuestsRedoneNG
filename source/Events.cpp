@@ -21,9 +21,9 @@ void Events::Register()
             UI->AddEventSink<RE::MenuOpenCloseEvent>(GetSingleton());
         }
 
-        logs::info("Events::Register :: Registered for MenuOpenCloseEvent");
-        logs::info("Events::Register :: Registered for TESActorLocationChangeEvent");
-        logs::info("Events::Register :: Registered for TESContainerChangedEvent");
+        INFO("Events::Register :: Registered for MenuOpenCloseEvent");
+        INFO("Events::Register :: Registered for TESActorLocationChangeEvent");
+        INFO("Events::Register :: Registered for TESContainerChangedEvent");
     }
 }
 
@@ -54,14 +54,14 @@ EventResult Events::ProcessEvent(const RE::TESActorLocationChangeEvent* a_event,
     if (auto actor = a_event->actor.get(); actor) {
         if (actor == RE::PlayerCharacter::GetSingleton()) {
             if (auto newLocation = a_event->newLoc; newLocation) {
-                logs::info("Events::TESActorLocationChangeEvent :: Passing location: '{}' | '0x{:x}'", newLocation->GetName(), newLocation->GetFormID());
+                INFO("Events::TESActorLocationChangeEvent :: Passing location: '{}' | '0x{:x}'", newLocation->GetName(), newLocation->GetFormID());
                 auto trackers = Serialization::GetSingleton()->GetTrackers();
 
                 for (auto& tracker : trackers) {
                     auto currentLocation = newLocation;
                     while (currentLocation) {
                         if (tracker->region == currentLocation) {
-                            logs::info("Events::TESActorLocationChangeEvent :: Found parent region: '{}' | '0x{:x}'", currentLocation->GetName(), currentLocation->GetFormID());
+                            INFO("Events::TESActorLocationChangeEvent :: Found parent region: '{}' | '0x{:x}'", currentLocation->GetName(), currentLocation->GetFormID());
                             const auto BQRNG_Catalogue = Util::GetSingleton()->GetQuest(Offsets::Forms::BQRNG_Catalogue, "Bounty Quests Redone - NG.esl");
 
                             std::jthread thread(&System::UpdateLocationAlias, BQRNG_Catalogue, currentLocation);

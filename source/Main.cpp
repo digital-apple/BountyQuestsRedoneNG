@@ -3,21 +3,22 @@
 #include "Papyrus.h"
 #include "Serialization.h"
 
-void InitLogging()
+void InitializeLogger()
 {
-    auto path = logs::log_directory();
-    if (!path)
-        return;
+    auto path = SKSE::log::log_directory();
+
+    if (!path) { return; }
 
     const auto plugin = SKSE::PluginDeclaration::GetSingleton();
-    *path /= fmt::format("{}.log", plugin->GetName());
+    *path /= std::format("{}.log", plugin->GetName());
 
-    std::vector<spdlog::sink_ptr> sinks{ 
-        std::make_shared<spdlog::sinks::basic_file_sink_mt>(path->string(), true), 
-        std::make_shared<spdlog::sinks::msvc_sink_mt>() 
+    std::vector<spdlog::sink_ptr> sinks{
+        std::make_shared<spdlog::sinks::basic_file_sink_mt>(path->string(), true),
+        std::make_shared<spdlog::sinks::msvc_sink_mt>()
     };
 
     auto logger = std::make_shared<spdlog::logger>("global", sinks.begin(), sinks.end());
+
     logger->set_level(spdlog::level::info);
     logger->flush_on(spdlog::level::info);
 
@@ -25,12 +26,11 @@ void InitLogging()
     spdlog::set_pattern("[%^%L%$] %v");
 }
 
-void InitMessaging()
+void HandleMessage(SKSE::MessagingInterface::Message* a_message)
 {
-    logs::trace("Initializing messaging listener.");
-    const auto interface = SKSE::GetMessagingInterface();
-    if (!interface->RegisterListener([](SKSE::MessagingInterface::Message* a_msg) {
-        if (a_msg->type == SKSE::MessagingInterface::kDataLoaded) {
+    switch (a_message->type) {
+    case SKSE::MessagingInterface::kDataLoaded:
+        {
             Events::GetSingleton()->Register();
             const auto system = System::GetSingleton();
 
@@ -38,48 +38,56 @@ void InitMessaging()
             system->ParseRewards();
             system->ParseTrackers();
             system->ParseTexts();
-        }  
-        
-        })) {
-        stl::report_and_fail("Failed to initialize message listener.");
+
+            break;
+        }
     }
 }
 
-void InitPapyrus()
+void InitializePapyrus()
 {
-    logs::trace("Initializing papyrus bindings...");
+    TRACE("Initializing papyrus bindings...");
 
     if (SKSE::GetPapyrusInterface()->Register(Papyrus::RegisterFunctions)) {
-        logs::info("Papyrus functions bound.");
+        INFO("Papyrus functions bound.");
     } else {
         stl::report_and_fail("Failure to register Papyrus bindings.");
     }
 }
 
-void InitSerialization()
+void InitializeSerialization()
 {
-    logs::trace("Initializing cosave serialization...");
-    auto* interface = SKSE::GetSerializationInterface();
-    interface->SetUniqueID('BQNG');
-    interface->SetSaveCallback(Serialization::OnGameSaved);
-    interface->SetRevertCallback(Serialization::OnRevert);
-    interface->SetLoadCallback(Serialization::OnGameLoaded);
-    logs::trace("Cosave serialization initialized.");
+    TRACE("Initializing cosave serialization...");
+
+    auto* serialization_interface = SKSE::GetSerializationInterface();
+
+    serialization_interface->SetUniqueID('BQNG');
+    serialization_interface->SetSaveCallback(Serialization::OnGameSaved);
+    serialization_interface->SetRevertCallback(Serialization::OnRevert);
+    serialization_interface->SetLoadCallback(Serialization::OnGameLoaded);
+
+    TRACE("Cosave serialization initialized.");
 }
 
 SKSEPluginLoad(const SKSE::LoadInterface* a_skse)
 {
-    InitLogging();
+    InitializeLogger();
 
     const auto plugin = SKSE::PluginDeclaration::GetSingleton();
-    logs::info("{} v{} is loading...", plugin->GetName(), plugin->GetVersion());
+    INFO("{} v{} is loading...", plugin->GetName(), plugin->GetVersion());
 
     SKSE::Init(a_skse);
-    InitMessaging();
-    InitPapyrus();
-    InitSerialization();
 
-    logs::info("{} loaded.", plugin->GetName());
+    const auto messaging_interface = SKSE::GetMessagingInterface();
+
+    if (!messaging_interface) { stl::report_and_fail("Failed to communicate with the messaging interface!"); }
+
+    messaging_interface->RegisterListener(HandleMessage);
+
+    InitializePapyrus();
+    InitializeSerialization();
+
+    INFO("{} loaded.", plugin->GetName());
 
     return true;
 }

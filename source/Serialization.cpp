@@ -3,24 +3,24 @@
 
 void Serialization::AddTracker(RE::TESGlobal* a_global, RE::BGSLocation* a_region)
 {
-    logs::info("Serialization::AddTracker :: Parsing tracker: '{}' with global variable: '0x{:x}'", a_region->GetName(), a_global->GetFormID());
+    INFO("Serialization::AddTracker :: Parsing tracker: '{}' with global variable: '0x{:x}'", a_region->GetName(), a_global->GetFormID());
 
     Tracker instance{a_global, a_region};
     trackers.push_back(std::make_shared<Tracker>(instance));
-    logs::info("Serialization::AddTracker :: Current number of trackers: '{}'", trackers.size());
+    INFO("Serialization::AddTracker :: Current number of trackers: '{}'", trackers.size());
 }
 
 void Serialization::ClearTracker(RE::BGSLocation* a_region)
 {
-    logs::info("Serialization::ClearTracker :: Searching for tracker: '{}'", a_region->GetName());
+    INFO("Serialization::ClearTracker :: Searching for tracker: '{}'", a_region->GetName());
     for (auto& tracker : trackers) {
-        logs::info("Serialization::ClearTracker :: Parsing tracker: '{}'", tracker->region->GetName());
+        INFO("Serialization::ClearTracker :: Parsing tracker: '{}'", tracker->region->GetName());
         if (tracker->region == a_region) {
-            logs::info("Serialization::ClearTracker :: Tracker found!");
+            INFO("Serialization::ClearTracker :: Tracker found!");
             tracker->global->value = 0U;
-            logs::info("Serialization::ClearTracker :: Tried to clear global variable: '0x{:x}'. Result value: '{}'", tracker->global->GetFormID(), tracker->global->value);
+            INFO("Serialization::ClearTracker :: Tried to clear global variable: '0x{:x}'. Result value: '{}'", tracker->global->GetFormID(), tracker->global->value);
             tracker->reward.clear();
-            logs::info("Serialization::ClearTracker :: Tried to clear reward counter. Result value: '{}'", tracker->reward.size());
+            INFO("Serialization::ClearTracker :: Tried to clear reward counter. Result value: '{}'", tracker->reward.size());
             break;
         }
     }
@@ -90,10 +90,10 @@ void Serialization::ReserveLocation(RE::BGSLocation* a_location, bool a_reserve)
 {
     if (a_location) {
         if (a_reserve) {
-            logs::info("Serialization::ReserveLocation :: Reserving Location: '{}'", a_location->GetName());
+            INFO("Serialization::ReserveLocation :: Reserving Location: '{}'", a_location->GetName());
             reservedLocations.push_back(a_location);
         } else {
-            logs::info("Serialization::ReserveLocation :: Releasing Location: '{}'", a_location->GetName());
+            INFO("Serialization::ReserveLocation :: Releasing Location: '{}'", a_location->GetName());
             reservedLocations.erase(std::remove(reservedLocations.begin(), reservedLocations.end(), a_location), reservedLocations.end());
         }
     }
@@ -106,15 +106,15 @@ void Serialization::SerializeObjectivesText(RE::TESQuest* a_quest, RE::BGSLocati
 
 void Serialization::SetTracker(RE::BGSLocation* a_region, Util::DIFFICULTY a_difficulty, std::uint32_t a_amount)
 {
-    logs::info("Serialization::SetTracker :: Searching for tracker: '{}'", a_region->GetName());
+    INFO("Serialization::SetTracker :: Searching for tracker: '{}'", a_region->GetName());
     for (auto& tracker : trackers) {
-        logs::info("Serialization::SetTracker :: Parsing tracker: '{}'", tracker->region->GetName());
+        INFO("Serialization::SetTracker :: Parsing tracker: '{}'", tracker->region->GetName());
         if (tracker->region == a_region) {
-            logs::info("Serialization::SetTracker :: Tracker found!");
+            INFO("Serialization::SetTracker :: Tracker found!");
             tracker->global->value = 1U;
-            logs::info("Serialization::SetTracker :: Tried to set global variable: '0x{:x}'. Result value: '{}'", tracker->global->GetFormID(), tracker->global->value);
+            INFO("Serialization::SetTracker :: Tried to set global variable: '0x{:x}'. Result value: '{}'", tracker->global->GetFormID(), tracker->global->value);
             tracker->reward[a_difficulty] += a_amount;
-            logs::info("Serialization::SetTracker :: Tried to set reward counter for difficulty: '{}' with an increase of: '{}'. Result value: '{}'", static_cast<std::uint32_t>(a_difficulty), a_amount, tracker->reward[a_difficulty]);
+            INFO("Serialization::SetTracker :: Tried to set reward counter for difficulty: '{}' with an increase of: '{}'. Result value: '{}'", static_cast<std::uint32_t>(a_difficulty), a_amount, tracker->reward[a_difficulty]);
             break;
         }
     }
@@ -126,12 +126,12 @@ bool Serialization::UpdateTracker(RE::TESGlobal* a_global, RE::BGSLocation* a_re
         for (auto& tracker : trackers) {
             if (tracker->global == a_global && tracker->region == a_region) {
                 tracker->reward = a_reward;
-                logs::info("Serialization::UpdateTracker :: Updated tracker '0x{:x}' for region '{}'", a_global->GetFormID(), a_region->GetName());
+                INFO("Serialization::UpdateTracker :: Updated tracker '0x{:x}' for region '{}'", a_global->GetFormID(), a_region->GetName());
                 return true;
             }
         }
     }
-    logs::error("Serialization::UpdateTracker :: Failed to find tracker '0x{:x}' for region '{}'", a_global->GetFormID(), a_region->GetName());
+    ERROR("Serialization::UpdateTracker :: Failed to find tracker '0x{:x}' for region '{}'", a_global->GetFormID(), a_region->GetName());
     return false;
 }
 
@@ -144,7 +144,7 @@ bool Serialization::WriteString(SKSE::SerializationInterface* a_interface, const
 bool Serialization::SaveObjectives(SKSE::SerializationInterface* a_interface)
 {
     if (!a_interface->OpenRecord(kObjectives, kVersion)) {
-        logs::error("Serialization::SaveObjectives :: Failed to read record data.");
+        ERROR("Serialization::SaveObjectives :: Failed to read record data.");
         return false;
     }
 
@@ -154,7 +154,7 @@ bool Serialization::SaveObjectives(SKSE::SerializationInterface* a_interface)
     const auto count = objectivesList.size();
 
     if (!a_interface->WriteRecordData(&count, sizeof(count))) {
-        logs::error("Serialization::SaveObjectives :: Failed to write record data with the number of objectives! '{}'", count);
+        ERROR("Serialization::SaveObjectives :: Failed to write record data with the number of objectives! '{}'", count);
         return false;
     }
 
@@ -165,22 +165,22 @@ bool Serialization::SaveObjectives(SKSE::SerializationInterface* a_interface)
         const auto text = objective->text.data();
 
         if (!a_interface->WriteRecordData(&quest, sizeof(quest))) {
-            logs::error("Serialization::SaveObjectives :: Failed to write record data with the quest formID! '0x{:x}'", quest);
+            ERROR("Serialization::SaveObjectives :: Failed to write record data with the quest formID! '0x{:x}'", quest);
             return false;
         }
 
         if (!a_interface->WriteRecordData(&location, sizeof(location))) {
-            logs::error("Serialization::SaveObjectives :: Failed to write record data with the location formID! '0x{:x}'", location);
+            ERROR("Serialization::SaveObjectives :: Failed to write record data with the location formID! '0x{:x}'", location);
             return false;
         }
 
         if (!a_interface->WriteRecordData(&index, sizeof(index))) {
-            logs::error("Serialization::SaveObjectives :: Failed to write record data with the index! '{}'", index);
+            ERROR("Serialization::SaveObjectives :: Failed to write record data with the index! '{}'", index);
             return false;
         }
 
         if (!GetSingleton()->WriteString(a_interface, text)) {
-            logs::error("Serialization::SaveObjectives :: Failed to write record data with with the string! '{}'", text);
+            ERROR("Serialization::SaveObjectives :: Failed to write record data with with the string! '{}'", text);
             return false;
         }
     }
@@ -191,7 +191,7 @@ bool Serialization::SaveObjectives(SKSE::SerializationInterface* a_interface)
 bool Serialization::SaveLocations(SKSE::SerializationInterface* a_interface)
 {
     if (!a_interface->OpenRecord(kReservedLocations, kVersion)) {
-        logs::error("Serialization::SaveLocations :: Failed to read record data.");
+        ERROR("Serialization::SaveLocations :: Failed to read record data.");
         return false;
     }
 
@@ -201,14 +201,14 @@ bool Serialization::SaveLocations(SKSE::SerializationInterface* a_interface)
     const auto count = locations.size();
 
     if (!a_interface->WriteRecordData(&count, sizeof(count))) {
-        logs::error("Serialization::SaveLocations :: Failed to write record data with the number of reserved locations! '{}'", count);
+        ERROR("Serialization::SaveLocations :: Failed to write record data with the number of reserved locations! '{}'", count);
         return false;
     }
 
     for (auto& location : locations) {
         const auto formID = location->GetFormID();
         if (!a_interface->WriteRecordData(&formID, sizeof(formID))) {
-            logs::error("Serialization::SaveLocations :: Failed to write record data with the reserved location formID! '0x{:x}'", formID);
+            ERROR("Serialization::SaveLocations :: Failed to write record data with the reserved location formID! '0x{:x}'", formID);
             return false;
         }
     }
@@ -219,7 +219,7 @@ bool Serialization::SaveLocations(SKSE::SerializationInterface* a_interface)
 bool Serialization::SaveTrackers(SKSE::SerializationInterface* a_interface)
 {
     if (!a_interface->OpenRecord(kTrackers, kVersion)) {
-        logs::error("Serialization::SaveTrackers :: Failed to read record data.");
+        ERROR("Serialization::SaveTrackers :: Failed to read record data.");
         return false;
     }
 
@@ -229,7 +229,7 @@ bool Serialization::SaveTrackers(SKSE::SerializationInterface* a_interface)
     const auto count = trackersList.size();
 
     if (!a_interface->WriteRecordData(&count, sizeof(count))) {
-        logs::error("Serialization::SaveTrackers :: Failed to write record data with the number of trackers! '{}'", count);
+        ERROR("Serialization::SaveTrackers :: Failed to write record data with the number of trackers! '{}'", count);
         return false;
     }
 
@@ -238,12 +238,12 @@ bool Serialization::SaveTrackers(SKSE::SerializationInterface* a_interface)
         const auto region = tracker->region->GetFormID();
         
         if (!a_interface->WriteRecordData(&global, sizeof(global))) {
-            logs::error("Serialization::SaveTrackers :: Failed to write record data with the global variable formID! '0x{:x}'", global);
+            ERROR("Serialization::SaveTrackers :: Failed to write record data with the global variable formID! '0x{:x}'", global);
             return false;
         }
 
         if (!a_interface->WriteRecordData(&region, sizeof(region))) {
-            logs::error("Serialization::SaveTrackers :: Failed to write record data with the region formID! '0x{:x}'", region);
+            ERROR("Serialization::SaveTrackers :: Failed to write record data with the region formID! '0x{:x}'", region);
             return false;
         }
 
@@ -251,7 +251,7 @@ bool Serialization::SaveTrackers(SKSE::SerializationInterface* a_interface)
         const auto amount = rewards.size();
 
         if (!a_interface->WriteRecordData(&amount, sizeof(amount))) {
-            logs::error("Serialization::SaveTrackers :: Failed to write record data with the number of rewards! '{}'", amount);
+            ERROR("Serialization::SaveTrackers :: Failed to write record data with the number of rewards! '{}'", amount);
             return false;
         }
 
@@ -260,12 +260,12 @@ bool Serialization::SaveTrackers(SKSE::SerializationInterface* a_interface)
             const auto quantity = reward.second;
 
             if (!a_interface->WriteRecordData(&difficulty, sizeof(difficulty))) {
-                logs::error("Serialization::SaveTrackers :: Failed to write record data with the reward difficulty value! '{}'", static_cast<std::uint32_t>(difficulty));
+                ERROR("Serialization::SaveTrackers :: Failed to write record data with the reward difficulty value! '{}'", static_cast<std::uint32_t>(difficulty));
                 return false;
             }
 
             if (!a_interface->WriteRecordData(&quantity, sizeof(quantity))) {
-                logs::error("Serialization::SaveTrackers :: Failed to write record data with the reward quantity value! '{}'", quantity);
+                ERROR("Serialization::SaveTrackers :: Failed to write record data with the reward quantity value! '{}'", quantity);
                 return false;
             }
         }
@@ -278,7 +278,7 @@ bool Serialization::LoadObjectives(SKSE::SerializationInterface* a_interface)
 {
     std::size_t count;
     a_interface->ReadRecordData(&count, sizeof(count));
-    logs::info("Serialization::LoadObjectives :: Loading '{}' objectives.", count);
+    INFO("Serialization::LoadObjectives :: Loading '{}' objectives.", count);
 
     for (std::size_t i = 0; i < count; i++) {
         RE::FormID oldQuest;
@@ -295,12 +295,12 @@ bool Serialization::LoadObjectives(SKSE::SerializationInterface* a_interface)
         RE::FormID newLocation;
 
         if (!a_interface->ResolveFormID(oldQuest, newQuest)) {
-            logs::error("Serialization::LoadObjectives :: Failed to resolve the quest formID! '0x{:x}' -> '0x{:x}'", oldQuest, newQuest);
+            ERROR("Serialization::LoadObjectives :: Failed to resolve the quest formID! '0x{:x}' -> '0x{:x}'", oldQuest, newQuest);
             continue;
         }
 
         if (!a_interface->ResolveFormID(oldLocation, newLocation)) {
-            logs::error("Serialization::LoadObjectives :: Failed to resolve the location formID! '0x{:x}' -> '0x{:x}'", oldLocation, newLocation);
+            ERROR("Serialization::LoadObjectives :: Failed to resolve the location formID! '0x{:x}' -> '0x{:x}'", oldLocation, newLocation);
             continue;
         }
 
@@ -310,7 +310,7 @@ bool Serialization::LoadObjectives(SKSE::SerializationInterface* a_interface)
         if (quest && location) {
             GetSingleton()->DeserializeObjectivesText(quest, location, index, text.data());
         } else {
-            logs::error("Serialization::LoadObjectives");
+            ERROR("Serialization::LoadObjectives");
             continue;
         }
     }
@@ -322,7 +322,7 @@ bool Serialization::LoadLocations(SKSE::SerializationInterface* a_interface)
 {
     std::size_t count;
     a_interface->ReadRecordData(&count, sizeof(count));
-    logs::info("Serialization::LoadLocations :: Loading '{}' locations.", count);
+    INFO("Serialization::LoadLocations :: Loading '{}' locations.", count);
 
     for (std::size_t i = 0; i < count; i++) {
         RE::FormID oldLocation;
@@ -330,7 +330,7 @@ bool Serialization::LoadLocations(SKSE::SerializationInterface* a_interface)
         RE::FormID newLocation;
 
         if (!a_interface->ResolveFormID(oldLocation, newLocation)) {
-            logs::error("Serialization::LoadLocations :: Failed to resolve the location formID! '0x{:x}' -> '0x{:x}'", oldLocation, newLocation);
+            ERROR("Serialization::LoadLocations :: Failed to resolve the location formID! '0x{:x}' -> '0x{:x}'", oldLocation, newLocation);
             continue;
         }
 
@@ -339,7 +339,7 @@ bool Serialization::LoadLocations(SKSE::SerializationInterface* a_interface)
         if (location) {
             GetSingleton()->ReserveLocation(location, true);
         } else {
-            logs::error("Serialization::LoadLocations");
+            ERROR("Serialization::LoadLocations");
             continue;
         }
     }
@@ -351,7 +351,7 @@ bool Serialization::LoadTrackers(SKSE::SerializationInterface* a_interface)
 {
     std::size_t count;
     a_interface->ReadRecordData(&count, sizeof(count));
-    logs::info("Serialization::LoadTrackers :: Loading '{}' trackers.", count);
+    INFO("Serialization::LoadTrackers :: Loading '{}' trackers.", count);
 
     for (std::size_t i = 0; i < count; i++) {
         RE::FormID oldGlobal;
@@ -377,12 +377,12 @@ bool Serialization::LoadTrackers(SKSE::SerializationInterface* a_interface)
         RE::FormID newRegion;
 
         if (!a_interface->ResolveFormID(oldGlobal, newGlobal)) {
-            logs::error("Serialization::LoadTrackers :: Failed to resolve the global variable formID! '0x{:x}' -> '0x{:x}'", oldGlobal, newGlobal);
+            ERROR("Serialization::LoadTrackers :: Failed to resolve the global variable formID! '0x{:x}' -> '0x{:x}'", oldGlobal, newGlobal);
             continue;
         }
 
         if (!a_interface->ResolveFormID(oldRegion, newRegion)) {
-            logs::error("Serialization::LoadTrackers :: Failed to resolve the region formID! '0x{:x}' -> '0x{:x}'", oldRegion, newRegion);
+            ERROR("Serialization::LoadTrackers :: Failed to resolve the region formID! '0x{:x}' -> '0x{:x}'", oldRegion, newRegion);
             continue;
         }
 
@@ -394,7 +394,7 @@ bool Serialization::LoadTrackers(SKSE::SerializationInterface* a_interface)
                 continue;
             }
         } else {
-            logs::error("Serialization::LoadTrackers");
+            ERROR("Serialization::LoadTrackers");
             continue;
         }
     }
@@ -417,21 +417,21 @@ void Serialization::OnGameLoaded(SKSE::SerializationInterface* a_interface)
 
     while (a_interface->GetNextRecordInfo(type, version, length)) {
         if (version != kVersion) {
-            logs::critical("Serialization::OnGameLoaded :: Record data version mismatch! '{}' -> '{}'", version, static_cast<std::uint32_t>(kVersion));
+            ERROR("Serialization::OnGameLoaded :: Record data version mismatch! '{}' -> '{}'", version, static_cast<std::uint32_t>(kVersion));
             continue;
         }
 
         switch (type) {
         case kReservedLocations:
-            logs::info("Serialization::OnGameLoaded :: kReservedLocations");
+            INFO("Serialization::OnGameLoaded :: kReservedLocations");
             GetSingleton()->LoadLocations(a_interface);
             break;
         case kObjectives:
-            logs::info("Serialization::OnGameLoaded :: kObjectives");
+            INFO("Serialization::OnGameLoaded :: kObjectives");
             GetSingleton()->LoadObjectives(a_interface);
             break;
         case kTrackers:
-            logs::info("Serialization::OnGameLoaded :: kTrackers");
+            INFO("Serialization::OnGameLoaded :: kTrackers");
             GetSingleton()->LoadTrackers(a_interface);
             break;
         }
@@ -440,7 +440,7 @@ void Serialization::OnGameLoaded(SKSE::SerializationInterface* a_interface)
 
 void Serialization::OnRevert(SKSE::SerializationInterface*)
 {
-    logs::info("Serialization::OnRevert :: Reverting data.");
+    INFO("Serialization::OnRevert :: Reverting data.");
     std::unique_lock lock(GetSingleton()->lock);
     GetSingleton()->reservedLocations.clear();
     GetSingleton()->objectives.clear();

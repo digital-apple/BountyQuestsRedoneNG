@@ -93,6 +93,6 @@ auto Util::GetType(std::string a_string) -> Util::TYPE
 
 void Util::SetText(Util::TEXT a_text, std::string a_string)
 {
-    logs::info("Util::SetText :: Parsed text: '{}'", a_string);
+    INFO("Util::SetText :: Parsed text: '{}'", a_string);
     text.try_emplace(a_text, a_string);
 }
